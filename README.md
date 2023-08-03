@@ -10,7 +10,6 @@
 
 - [Install](#install)
   - [Browser `<script>` tag](#browser-script-tag)
-- [Usage](#usage)
 - [API Docs](#api-docs)
 - [License](#license)
 - [Contribution](#contribution)
@@ -27,16 +26,6 @@ Loading this module through a script tag will make it's exports available as `Mu
 
 ```html
 <script src="https://unpkg.com/@multiformats/multiaddr-matcher/dist/index.min.js"></script>
-```
-
-## Usage
-
-```js
-import { multiaddr } from '@multiformats/multiaddr'
-import { DNS } from '@multiformats/multiaddr-matcher'
-
-DNS.matches(multiaddr('/dns4/ipfs.io')) // true
-DNS.matches(multiaddr('/ip4/123.123.123.123/tcp/1234')) // false
 ```
 
 ## API Docs
