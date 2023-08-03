@@ -1,6 +1,6 @@
 {
   "name": "@multiformats/multiaddr-matcher",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Match different multiaddr formats",
   "license": "Apache-2.0 OR MIT",
   "homepage": "https://github.com/multiformats/js-multiaddr-matcher#readme",
