@@ -34,10 +34,13 @@
 
 import { isIPv4, isIPv6 } from '@chainsafe/is-ip'
 import { type Multiaddr } from '@multiformats/multiaddr'
-import { base64url } from 'multiformats/bases/base64'
 import { base58btc } from 'multiformats/bases/base58'
+import { base64url } from 'multiformats/bases/base64'
 
-const toParts = (ma: Multiaddr) => {
+/**
+ * Split a multiaddr into path components
+ */
+const toParts = (ma: Multiaddr): string[] => {
   return ma.toString().split('/').slice(1)
 }
 
