@@ -448,7 +448,7 @@ const QUIC_V0_OR_V1 = or(_QUIC, _QUICV1)
  * import { multiaddr } from '@multiformats/multiaddr'
  * import { QUIC } from '@multiformats/multiaddr-matcher'
  *
- * UDP.matches(multiaddr('/ip4/123.123.123.123/udp/1234/quic')) // true
+ * QUIC.matches(multiaddr('/ip4/123.123.123.123/udp/1234/quic')) // true
  * ```
  */
 export const QUIC = fmt(_QUIC)
@@ -460,9 +460,9 @@ export const QUIC = fmt(_QUIC)
  *
  * ```ts
  * import { multiaddr } from '@multiformats/multiaddr'
- * import { QUIC } from '@multiformats/multiaddr-matcher'
+ * import { QUICV1 } from '@multiformats/multiaddr-matcher'
  *
- * UDP.matches(multiaddr('/ip4/123.123.123.123/udp/1234/quic-v1')) // true
+ * QUICV1.matches(multiaddr('/ip4/123.123.123.123/udp/1234/quic-v1')) // true
  * ```
  */
 export const QUICV1 = fmt(_QUICV1)
