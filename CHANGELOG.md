@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.0.0...v1.0.1) (2023-08-04)
+
+
+### Documentation
+
+* update quic example to fix typo ([#1](https://github.com/multiformats/js-multiaddr-matcher/issues/1)) ([a23a46f](https://github.com/multiformats/js-multiaddr-matcher/commit/a23a46fb4b950975376c427cfb6efb3054832853))
+
 ## 1.0.0 (2023-08-03)
 
 
