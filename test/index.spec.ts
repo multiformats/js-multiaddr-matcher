@@ -163,7 +163,21 @@ describe('multiaddr matcher', () => {
     '/ip4/1.2.3.4/tcp/3456/ipfs/QmcgpsyWgH8Y8ajJz1Cu72KnS5uo2Aa2LpzU7kinSoooo4/p2p-circuit/p2p/QmTysQQiTGMdfRsDQp516oZ9bR3FiSCDnicUnqny2q1d79',
     '/ip4/127.0.0.1/tcp/4002/ipfs/QmddWMcQX6orJGHpETYMyPgXrCXCtYANMFVDCvhKoDwLqA/p2p-circuit/p2p/QmTysQQiTGMdfRsDQp516oZ9bR3FiSCDnicUnqny2q1d79',
     '/ip6/::/tcp/20008/ws/ipfs/QmUjNmr8TgJCn1Ao7DvMy4cjoZU15b9bwSCBLE3vwXiwgj/p2p-circuit/ipfs/QmUjNmr8TgJCn1Ao7DvMy4cjoZU15b9bwSCBLE3vwXiwgj',
-    '/ip4/127.0.0.1/tcp/59119/ws/p2p/12D3KooWAzabxK2xhwGQuTUYjbcFT9SZcNvPS1cvj7bPMe2Rh9qF/p2p-circuit/p2p/12D3KooWA6L4J1yRwqLwdXPZBxz3UL4E8pEE6AEhFkqDH5LTQyfq'
+    '/ip4/127.0.0.1/tcp/59119/ws/p2p/12D3KooWAzabxK2xhwGQuTUYjbcFT9SZcNvPS1cvj7bPMe2Rh9qF/p2p-circuit/p2p/12D3KooWA6L4J1yRwqLwdXPZBxz3UL4E8pEE6AEhFkqDH5LTQyfq',
+    '/ipfs/QmcgpsyWgH8Y8ajJz1Cu72KnS5uo2Aa2LpzU7kinSoooo4/p2p-circuit',
+    '/p2p/QmcgpsyWgH8Y8ajJz1Cu72KnS5uo2Aa2LpzU7kinSoooo4/p2p-circuit',
+    '/ip4/5.161.55.227/tcp/4001/p2p/12D3KooWSW4hoHmDXmY5rW7nCi9XmGTy3foFt72u86jNP53LTNBJ/p2p-circuit',
+    '/ip4/5.161.55.227/udp/4001/quic-v1/webtransport/certhash/uEiAVFKPNfMZ-n9o4QEUIoDKM3UrXRlrfCBwhflJAkO6fdA/certhash/uEiCAaSv97aZJ8eA7o41dza9EoLMHtv51dSdntNwYKRdu0g/p2p/12D3KooWSW4hoHmDXmY5rW7nCi9XmGTy3foFt72u86jNP53LTNBJ/p2p-circuit',
+    '/ip4/5.161.55.227/udp/4001/quic/p2p/12D3KooWSW4hoHmDXmY5rW7nCi9XmGTy3foFt72u86jNP53LTNBJ/p2p-circuit',
+    '/ip4/5.161.92.43/tcp/4001/p2p/12D3KooWFFhc8fPYnQXdWBCowxSV21EFYin3rU27p3NVgSMjN41k/p2p-circuit',
+    '/ip4/5.161.92.43/udp/4001/quic-v1/webtransport/certhash/uEiDfxpe8sEFZ2k4BRjku6zhmfMLrig2EtuydiK9UxpPpIw/certhash/uEiCx-6CWdlNH5f1qfOwhFfCqYWxUpzoVirpd9R0cIfkwqA/p2p/12D3KooWFFhc8fPYnQXdWBCowxSV21EFYin3rU27p3NVgSMjN41k/p2p-circuit',
+    '/ip4/5.161.92.43/udp/4001/quic/p2p/12D3KooWFFhc8fPYnQXdWBCowxSV21EFYin3rU27p3NVgSMjN41k/p2p-circuit',
+    '/ip6/2a01:4ff:f0:1e5a::1/tcp/4001/p2p/12D3KooWSW4hoHmDXmY5rW7nCi9XmGTy3foFt72u86jNP53LTNBJ/p2p-circuit',
+    '/ip6/2a01:4ff:f0:1e5a::1/udp/4001/quic-v1/webtransport/certhash/uEiAVFKPNfMZ-n9o4QEUIoDKM3UrXRlrfCBwhflJAkO6fdA/certhash/uEiCAaSv97aZJ8eA7o41dza9EoLMHtv51dSdntNwYKRdu0g/p2p/12D3KooWSW4hoHmDXmY5rW7nCi9XmGTy3foFt72u86jNP53LTNBJ/p2p-circuit',
+    '/ip6/2a01:4ff:f0:1e5a::1/udp/4001/quic/p2p/12D3KooWSW4hoHmDXmY5rW7nCi9XmGTy3foFt72u86jNP53LTNBJ/p2p-circuit',
+    '/ip6/2a01:4ff:f0:3b1e::1/tcp/4001/p2p/12D3KooWFFhc8fPYnQXdWBCowxSV21EFYin3rU27p3NVgSMjN41k/p2p-circuit',
+    '/ip6/2a01:4ff:f0:3b1e::1/udp/4001/quic-v1/webtransport/certhash/uEiDfxpe8sEFZ2k4BRjku6zhmfMLrig2EtuydiK9UxpPpIw/certhash/uEiCx-6CWdlNH5f1qfOwhFfCqYWxUpzoVirpd9R0cIfkwqA/p2p/12D3KooWFFhc8fPYnQXdWBCowxSV21EFYin3rU27p3NVgSMjN41k/p2p-circuit',
+    '/ip6/2a01:4ff:f0:3b1e::1/udp/4001/quic/p2p/12D3KooWFFhc8fPYnQXdWBCowxSV21EFYin3rU27p3NVgSMjN41k/p2p-circuit',
   ]
 
   const badCircuit = [
