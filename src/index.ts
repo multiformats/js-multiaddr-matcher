@@ -571,7 +571,7 @@ export const P2P = fmt(_P2P)
 
 const _Circuit = or(
   and(_P2P, literal('p2p-circuit')),
-  and(_P2P, literal('p2p-circuit'), peerId()),
+  and(_P2P, literal('p2p-circuit'), peerId())
 )
 
 /**
