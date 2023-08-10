@@ -177,7 +177,7 @@ describe('multiaddr matcher', () => {
     '/ip6/2a01:4ff:f0:1e5a::1/udp/4001/quic/p2p/12D3KooWSW4hoHmDXmY5rW7nCi9XmGTy3foFt72u86jNP53LTNBJ/p2p-circuit',
     '/ip6/2a01:4ff:f0:3b1e::1/tcp/4001/p2p/12D3KooWFFhc8fPYnQXdWBCowxSV21EFYin3rU27p3NVgSMjN41k/p2p-circuit',
     '/ip6/2a01:4ff:f0:3b1e::1/udp/4001/quic-v1/webtransport/certhash/uEiDfxpe8sEFZ2k4BRjku6zhmfMLrig2EtuydiK9UxpPpIw/certhash/uEiCx-6CWdlNH5f1qfOwhFfCqYWxUpzoVirpd9R0cIfkwqA/p2p/12D3KooWFFhc8fPYnQXdWBCowxSV21EFYin3rU27p3NVgSMjN41k/p2p-circuit',
-    '/ip6/2a01:4ff:f0:3b1e::1/udp/4001/quic/p2p/12D3KooWFFhc8fPYnQXdWBCowxSV21EFYin3rU27p3NVgSMjN41k/p2p-circuit',
+    '/ip6/2a01:4ff:f0:3b1e::1/udp/4001/quic/p2p/12D3KooWFFhc8fPYnQXdWBCowxSV21EFYin3rU27p3NVgSMjN41k/p2p-circuit'
   ]
 
   const badCircuit = [
