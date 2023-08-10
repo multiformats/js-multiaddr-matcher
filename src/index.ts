@@ -569,7 +569,10 @@ const _P2P = or(
  */
 export const P2P = fmt(_P2P)
 
-const _Circuit = and(_P2P, literal('p2p-circuit'), peerId())
+const _Circuit = or(
+  and(_P2P, literal('p2p-circuit')),
+  and(_P2P, literal('p2p-circuit'), peerId()),
+)
 
 /**
  * Matches circuit relay addresses
