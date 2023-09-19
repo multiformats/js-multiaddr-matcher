@@ -586,7 +586,7 @@ const _Circuit = and(_P2P, literal('p2p-circuit'), peerId())
 export const Circuit = fmt(_Circuit)
 
 const _WebRTC = or(
-  and(_Circuit, literal('webrtc')),
+  and(_P2P, literal('p2p-circuit'), literal('webrtc'), peerId()),
   and(_P2P, literal('webrtc'), optional(peerId())),
   literal('webrtc')
 )
@@ -600,7 +600,7 @@ const _WebRTC = or(
  * import { multiaddr } from '@multiformats/multiaddr'
  * import { WebRTC } from '@multiformats/multiaddr-matcher'
  *
- * WebRTC.matches(multiaddr('/ip4/123.123.123.123/tcp/1234/p2p/QmRelay/p2p-circuit/p2p/QmTarget/webrtc')) // true
+ * WebRTC.matches(multiaddr('/ip4/123.123.123.123/tcp/1234/p2p/QmRelay/p2p-circuit/webrtc/p2p/QmTarget')) // true
  * ```
  */
 export const WebRTC = fmt(_WebRTC)
