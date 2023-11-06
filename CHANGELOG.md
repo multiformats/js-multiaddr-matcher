@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.0.3...v1.1.0) (2023-11-06)
+
+
+### Features
+
+* IP_OR_DOMAIN matcher - e.g. IP or DNS multiaddrs ([#19](https://github.com/multiformats/js-multiaddr-matcher/issues/19)) ([3ecef6b](https://github.com/multiformats/js-multiaddr-matcher/commit/3ecef6b8fcbe87f43455da4a1056af0a9461671e))
+
 ## [1.0.3](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.0.2...v1.0.3) (2023-11-06)
 
 
