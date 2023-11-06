@@ -348,7 +348,23 @@ const _IP = or(
   _IP6
 )
 
-const IP_OR_DOMAIN = or(_IP, _DNS, _DNS4, _DNS6, _DNSADDR)
+const _IP_OR_DOMAIN = or(_IP, _DNS, _DNS4, _DNS6, _DNSADDR)
+
+/**
+ * A matcher for addresses that start with IP or DNS tuples.
+ *
+ * @example
+ *
+ * ```ts
+ * import { multiaddr } from '@multiformats/multiaddr'
+ * import { IP_OR_DOMAIN } from '@multiformats/multiaddr-matcher'
+ *
+ * IP_OR_DOMAIN.matches(multiaddr('/ip4/123.123.123.123/p2p/QmFoo')) // true
+ * IP_OR_DOMAIN.matches(multiaddr('/dns/example.com/p2p/QmFoo')) // true
+ * IP_OR_DOMAIN.matches(multiaddr('/p2p/QmFoo')) // false
+ * ```
+ */
+export const IP_OR_DOMAIN = fmt(_IP_OR_DOMAIN)
 
 /**
  * Matches ip4 addresses.
@@ -401,8 +417,8 @@ export const IP6 = fmt(_IP6)
  */
 export const IP = fmt(_IP)
 
-const _TCP = and(IP_OR_DOMAIN, literal('tcp'), number())
-const _UDP = and(IP_OR_DOMAIN, literal('udp'), number())
+const _TCP = and(_IP_OR_DOMAIN, literal('tcp'), number())
+const _UDP = and(_IP_OR_DOMAIN, literal('udp'), number())
 
 const TCP_OR_UDP = or(_TCP, _UDP)
 
@@ -468,7 +484,7 @@ export const QUIC = fmt(_QUIC)
 export const QUICV1 = fmt(_QUICV1)
 
 const _WEB = or(
-  IP_OR_DOMAIN,
+  _IP_OR_DOMAIN,
   _TCP,
   _UDP,
   _QUIC,
@@ -549,7 +565,7 @@ const _P2P = or(
   _WebSocketsSecure,
   and(_TCP, optional(peerId())),
   and(QUIC_V0_OR_V1, optional(peerId())),
-  and(IP_OR_DOMAIN, optional(peerId())),
+  and(_IP_OR_DOMAIN, optional(peerId())),
   _WebRTCDirect,
   _WebTransport,
   peerId()
