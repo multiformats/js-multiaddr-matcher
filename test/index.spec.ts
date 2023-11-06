@@ -238,18 +238,18 @@ describe('multiaddr matcher', () => {
     '/ip4/10.5.0.2/udp/4001/quic-v1/webtransport/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v'
   ]
 
-  const exactRoutable = [
+  const exactIPorDomain = [
     ...exactDNS,
     ...exactIP
   ]
 
-  const goodRoutable = [
-    ...exactRoutable,
+  const goodIPorDomain = [
+    ...exactIPorDomain,
     ...exactDNS,
     ...exactIP
   ]
 
-  const badRoutable = [
+  const badIPorDomain = [
     '/webrtc/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v',
     '/quic',
     '/unix/var/log'
@@ -345,9 +345,9 @@ describe('multiaddr matcher', () => {
     assertMismatches(mafmt.WebTransport, badWebTransport)
   })
 
-  it('Routable addresses', () => {
-    assertMatches(mafmt.ROUTABLE, goodRoutable)
-    assertExactMatches(mafmt.ROUTABLE, exactRoutable)
-    assertMismatches(mafmt.ROUTABLE, badRoutable)
+  it('IP or Domain addresses', () => {
+    assertMatches(mafmt.IP_OR_DOMAIN, goodIPorDomain)
+    assertExactMatches(mafmt.IP_OR_DOMAIN, exactIPorDomain)
+    assertMismatches(mafmt.IP_OR_DOMAIN, badIPorDomain)
   })
 })
