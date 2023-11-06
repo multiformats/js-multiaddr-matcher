@@ -49,7 +49,7 @@ const toParts = (ma: Multiaddr): string[] => {
  * false or returns a sublist of unmatched components
  */
 interface Matcher {
-  match: (parts: string[]) => string[] | false
+  match(parts: string[]): string[] | false
   pattern: string
 }
 
@@ -255,13 +255,13 @@ export interface MultiaddrMatcher {
    * Returns true if the passed multiaddr can be treated as this type of
    * multiaddr
    */
-  matches: (ma: Multiaddr) => boolean
+  matches(ma: Multiaddr): boolean
 
   /**
    * Returns true if the passed multiaddr terminates as this type of
    * multiaddr
    */
-  exactMatch: (ma: Multiaddr) => boolean
+  exactMatch(ma: Multiaddr): boolean
 }
 
 /**
