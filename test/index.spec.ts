@@ -238,6 +238,23 @@ describe('multiaddr matcher', () => {
     '/ip4/10.5.0.2/udp/4001/quic-v1/webtransport/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v'
   ]
 
+  const exactRoutable = [
+    ...exactDNS,
+    ...exactIP
+  ]
+
+  const goodRoutable = [
+    ...exactRoutable,
+    ...exactDNS,
+    ...exactIP
+  ]
+
+  const badRoutable = [
+    '/webrtc/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v',
+    '/quic',
+    '/unix/var/log'
+  ]
+
   function assertMatches (p: MultiaddrMatcher, ...tests: string[][]): void {
     tests.forEach((test) => {
       test.forEach((testcase) => {
@@ -326,5 +343,11 @@ describe('multiaddr matcher', () => {
   it('WebTransport addresses', () => {
     assertMatches(mafmt.WebTransport, goodWebTransport)
     assertMismatches(mafmt.WebTransport, badWebTransport)
+  })
+
+  it('Routable addresses', () => {
+    assertMatches(mafmt.ROUTABLE, goodRoutable)
+    assertExactMatches(mafmt.ROUTABLE, exactRoutable)
+    assertMismatches(mafmt.ROUTABLE, badRoutable)
   })
 })

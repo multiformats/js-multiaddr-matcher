@@ -351,6 +351,22 @@ const _IP = or(
 const IP_OR_DOMAIN = or(_IP, _DNS, _DNS4, _DNS6, _DNSADDR)
 
 /**
+ * Matches routable addresses - addresses that start with IP or DNS tuples.
+ *
+ * @example
+ *
+ * ```ts
+ * import { multiaddr } from '@multiformats/multiaddr'
+ * import { ROUTABLE } from '@multiformats/multiaddr-matcher'
+ *
+ * const ma = multiaddr('/ip4/123.123.123.123')
+ *
+ * ROUTABLE.matches(ma) // true
+ * ```
+ */
+export const ROUTABLE = fmt(IP_OR_DOMAIN)
+
+/**
  * Matches ip4 addresses.
  *
  * Use {@link IP IP} instead to match any ip4/ip6 address.
