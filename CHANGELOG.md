@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.1.0...v1.1.1) (2024-01-07)
+
+
+### Dependencies
+
+* bump multiformats from 12.1.3 to 13.0.0 ([#20](https://github.com/multiformats/js-multiaddr-matcher/issues/20)) ([bb82b3e](https://github.com/multiformats/js-multiaddr-matcher/commit/bb82b3e399f4c768a8ee92fbf6890e818a8ac656))
+
 ## [1.1.0](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.0.3...v1.1.0) (2023-11-06)
 
 
