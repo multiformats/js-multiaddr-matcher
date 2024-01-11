@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.1.1...v1.1.2) (2024-01-11)
+
+
+### Dependencies
+
+* **dev:** bump aegir from 41.3.5 to 42.1.0 ([#22](https://github.com/multiformats/js-multiaddr-matcher/issues/22)) ([318e828](https://github.com/multiformats/js-multiaddr-matcher/commit/318e82844834d3e59e9cef88b4b9dc6cab1c9a74))
+
 ## [1.1.1](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.1.0...v1.1.1) (2024-01-07)
 
 
