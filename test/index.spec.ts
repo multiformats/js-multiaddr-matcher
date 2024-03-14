@@ -255,6 +255,47 @@ describe('multiaddr matcher', () => {
     '/unix/var/log'
   ]
 
+  const exactHTTP = [
+    '/ip4/0.0.0.0/tcp/80/http',
+    '/ip6/fc00::/tcp/80/http',
+    '/dns4/example.org/tcp/80/http',
+    '/dns6/example.org/tcp/80/http',
+    '/dnsaddr/example.org/tcp/80/http',
+    '/dns/example.org/tcp/7777/http',
+    '/dns/example.org/tcp/7777/http/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v'
+  ]
+
+  const goodHTTP = [
+    ...exactHTTP
+  ]
+
+  const badHTTP = [
+    '/ip4/0.0.0.0/udp/80/http'
+  ]
+
+  const exactHTTPS = [
+    '/ip4/0.0.0.0/tcp/0/https',
+    '/ip6/fc00::/tcp/0/https',
+    '/dns4/example.org/tcp/80/https',
+    '/dns6/example.org/tcp/80/https',
+    '/dnsaddr/example.org/tcp/80/https',
+    '/dns/example.org/tcp/7777/https',
+    '/dns4/example.org/tcp/443/http',
+    '/dns6/example.org/tcp/443/http',
+    '/dnsaddr/example.org/tcp/443/http',
+    '/dns/example.org/tcp/443/http',
+    '/dns4/example.org/tls/http',
+    '/dns/example.org/tls/http/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v'
+  ]
+
+  const goodHTTPS = [
+    ...exactHTTPS
+  ]
+
+  const badHTTPS = [
+    '/ip4/0.0.0.0/udp/80/http'
+  ]
+
   function assertMatches (p: MultiaddrMatcher, ...tests: string[][]): void {
     tests.forEach((test) => {
       test.forEach((testcase) => {
@@ -349,5 +390,17 @@ describe('multiaddr matcher', () => {
     assertMatches(mafmt.IP_OR_DOMAIN, goodIPorDomain)
     assertExactMatches(mafmt.IP_OR_DOMAIN, exactIPorDomain)
     assertMismatches(mafmt.IP_OR_DOMAIN, badIPorDomain)
+  })
+
+  it('HTTP addresses', () => {
+    assertMatches(mafmt.HTTP, goodHTTP)
+    assertExactMatches(mafmt.HTTP, exactHTTP)
+    assertMismatches(mafmt.HTTP, badHTTP)
+  })
+
+  it('HTTPS addresses', () => {
+    assertMatches(mafmt.HTTPS, goodHTTPS)
+    assertExactMatches(mafmt.HTTPS, exactHTTPS)
+    assertMismatches(mafmt.HTTPS, badHTTPS)
   })
 })

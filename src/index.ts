@@ -620,3 +620,45 @@ const _WebRTC = or(
  * ```
  */
 export const WebRTC = fmt(_WebRTC)
+
+const _HTTP = or(
+  and(_IP_OR_DOMAIN, literal('tcp'), number(), literal('http'), optional(peerId())),
+  and(_IP_OR_DOMAIN, literal('http'), optional(peerId()))
+)
+
+/**
+ * Matches HTTP addresses
+ *
+ * @example
+ *
+ * ```ts
+ * import { multiaddr } from '@multiformats/multiaddr'
+ * import { HTTP } from '@multiformats/multiaddr-matcher'
+ *
+ * HTTP.matches(multiaddr('/dns/example.org/http')) // true
+ * ```
+ */
+export const HTTP = fmt(_HTTP)
+
+const _HTTPS = or(
+  and(_IP_OR_DOMAIN, literal('tcp'), or(
+    and(literal('443'), literal('http')),
+    and(number(), literal('https'))
+  ), optional(peerId())),
+  and(_IP_OR_DOMAIN, literal('tls'), literal('http'), optional(peerId())),
+  and(_IP_OR_DOMAIN, literal('https'), optional(peerId()))
+)
+
+/**
+ * Matches HTTPS addresses
+ *
+ * @example
+ *
+ * ```ts
+ * import { multiaddr } from '@multiformats/multiaddr'
+ * import { HTTP } from '@multiformats/multiaddr-matcher'
+ *
+ * HTTP.matches(multiaddr('/dns/example.org/tls/http')) // true
+ * ```
+ */
+export const HTTPS = fmt(_HTTPS)
