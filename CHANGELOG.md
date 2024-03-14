@@ -1,3 +1,10 @@
+## [1.2.0](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.1.2...v1.2.0) (2024-03-14)
+
+
+### Features
+
+* add matchers for HTTP and HTTPS addresses ([#23](https://github.com/multiformats/js-multiaddr-matcher/issues/23)) ([8bfc218](https://github.com/multiformats/js-multiaddr-matcher/commit/8bfc218fd216426657115b87ba285c9f386ea618))
+
 ## [1.1.2](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.1.1...v1.1.2) (2024-01-11)
 
 
