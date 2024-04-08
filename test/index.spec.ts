@@ -54,7 +54,7 @@ describe('multiaddr matcher', () => {
 
   const goodTCP = [
     ...exactTCP,
-    '/ip4/0.0.7.6/tcp/wss',
+    '/ip4/0.0.7.6/tcp/80/wss',
     '/ip6/::/tcp/0/p2p/QmTysQQiTGMdfRsDQp516oZ9bR3FiSCDnicUnqny2q1d79/p2p-circuit/p2p/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64',
     '/dns4/protocol.ai/tcp/80/webrtc'
   ]
@@ -299,7 +299,8 @@ describe('multiaddr matcher', () => {
   function assertMatches (p: MultiaddrMatcher, ...tests: string[][]): void {
     tests.forEach((test) => {
       test.forEach((testcase) => {
-        expect(p.matches(multiaddr(testcase))).to.equal(true, `${testcase} did not match`)
+        expect(p.matches(multiaddr(testcase))).to.equal(true, `${testcase} as Multiaddr did not match`)
+        expect(p.matches(testcase)).to.equal(true, `${testcase} as string did not match`)
       })
     })
   }
@@ -307,7 +308,8 @@ describe('multiaddr matcher', () => {
   function assertExactMatches (p: MultiaddrMatcher, ...tests: string[][]): void {
     tests.forEach((test) => {
       test.forEach((testcase) => {
-        expect(p.exactMatch(multiaddr(testcase))).to.equal(true, `${testcase} did not exact match`)
+        expect(p.exactMatch(multiaddr(testcase))).to.equal(true, `${testcase} as Multiaddr did not exact match`)
+        expect(p.exactMatch(testcase)).to.equal(true, `${testcase} as string did not exact match`)
       })
     })
   }
@@ -315,7 +317,8 @@ describe('multiaddr matcher', () => {
   function assertMismatches (p: MultiaddrMatcher, ...tests: string[][]): void {
     tests.forEach((test) => {
       test.forEach((testcase) => {
-        expect(p.matches(multiaddr(testcase))).to.equal(false, `${testcase} matched when it should not have`)
+        expect(p.matches(multiaddr(testcase))).to.equal(false, `${testcase} as Multiaddr matched when it should not have`)
+        expect(p.matches(testcase)).to.equal(false, `${testcase} as string matched when it should not have`)
       })
     })
   }
