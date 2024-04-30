@@ -544,7 +544,7 @@ const _WebRTCDirect = and(TCP_OR_UDP, literal('webrtc-direct'), certhash(), opti
  */
 export const WebRTCDirect = fmt(_WebRTCDirect)
 
-const _WebTransport = and(_QUICV1, literal('webtransport'), certhash(), certhash(), optional(peerId()))
+const _WebTransport = and(_QUICV1, literal('webtransport'), optional(certhash()), optional(certhash()), optional(peerId()))
 
 /**
  * Matches WebTransport addresses.
