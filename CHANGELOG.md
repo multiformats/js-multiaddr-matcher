@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.2.0...v1.2.1) (2024-04-30)
+
+
+### Bug Fixes
+
+* make certhashes optional in WebTransport addresses ([#26](https://github.com/multiformats/js-multiaddr-matcher/issues/26)) ([3d6206a](https://github.com/multiformats/js-multiaddr-matcher/commit/3d6206a977d2210d2ef983858b9622c37f9b6f91))
+
 ## [1.2.0](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.1.2...v1.2.0) (2024-03-14)
 
 
