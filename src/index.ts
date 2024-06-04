@@ -420,8 +420,6 @@ export const IP = fmt(_IP)
 const _TCP = and(_IP_OR_DOMAIN, literal('tcp'), number())
 const _UDP = and(_IP_OR_DOMAIN, literal('udp'), number())
 
-const TCP_OR_UDP = or(_TCP, _UDP)
-
 /**
  * Matches TCP addresses.
  *
@@ -528,7 +526,7 @@ const _WebSocketsSecure = or(
  */
 export const WebSocketsSecure = fmt(_WebSocketsSecure)
 
-const _WebRTCDirect = and(TCP_OR_UDP, literal('webrtc-direct'), certhash(), optional(certhash()), optional(peerId()))
+const _WebRTCDirect = and(_UDP, literal('webrtc-direct'), optional(certhash()), optional(certhash()), optional(peerId()))
 
 /**
  * Matches WebRTC-direct addresses.
