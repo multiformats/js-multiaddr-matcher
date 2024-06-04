@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.2.3...v1.2.4) (2024-06-04)
+
+
+### Bug Fixes
+
+* make webrtc-direct certhashes optional and require udp ([#30](https://github.com/multiformats/js-multiaddr-matcher/issues/30)) ([4ea2f4e](https://github.com/multiformats/js-multiaddr-matcher/commit/4ea2f4e864c366b18ea7c574b00a9b5e8a9ebd48))
+
 ## [1.2.3](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.2.2...v1.2.3) (2024-06-04)
 
 
