@@ -40,7 +40,7 @@ import { base64url } from 'multiformats/bases/base64'
 /**
  * Split a multiaddr into path components
  */
-const toParts = (ma: Multiaddr): string[] => {
+const toParts = (ma: Multiaddr | string): string[] => {
   return ma.toString().split('/').slice(1)
 }
 
@@ -208,7 +208,7 @@ const and = (...matchers: Matcher[]): Matcher => {
 }
 
 function fmt (...matchers: Matcher[]): MultiaddrMatcher {
-  function match (ma: Multiaddr): string[] | false {
+  function match (ma: Multiaddr | string): string[] | false {
     let parts = toParts(ma)
 
     for (const matcher of matchers) {
@@ -224,13 +224,13 @@ function fmt (...matchers: Matcher[]): MultiaddrMatcher {
     return parts
   }
 
-  function matches (ma: Multiaddr): boolean {
+  function matches (ma: Multiaddr | string): boolean {
     const result = match(ma)
 
     return result !== false
   }
 
-  function exactMatch (ma: Multiaddr): boolean {
+  function exactMatch (ma: Multiaddr | string): boolean {
     const result = match(ma)
 
     if (result === false) {
@@ -255,13 +255,13 @@ export interface MultiaddrMatcher {
    * Returns true if the passed multiaddr can be treated as this type of
    * multiaddr
    */
-  matches(ma: Multiaddr): boolean
+  matches(ma: Multiaddr | string): boolean
 
   /**
    * Returns true if the passed multiaddr terminates as this type of
    * multiaddr
    */
-  exactMatch(ma: Multiaddr): boolean
+  exactMatch(ma: Multiaddr | string): boolean
 }
 
 /**
