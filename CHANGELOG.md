@@ -1,3 +1,9 @@
+## [1.2.6](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.2.5...v1.2.6) (2024-09-26)
+
+### Bug Fixes
+
+* match peer ids in tcp and dns addresses ([#35](https://github.com/multiformats/js-multiaddr-matcher/issues/35)) ([26f2ff6](https://github.com/multiformats/js-multiaddr-matcher/commit/26f2ff683914c12f111c7dccb7d4676fbfd9edde))
+
 ## [1.2.5](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.2.4...v1.2.5) (2024-09-26)
 
 ### Dependencies
