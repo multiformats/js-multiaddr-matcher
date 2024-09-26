@@ -10,7 +10,8 @@ describe('multiaddr matcher', () => {
     '/dnsaddr/ipfs.io',
     '/dns4/ipfs.io',
     '/dns4/libp2p.io',
-    '/dns6/protocol.ai'
+    '/dns6/protocol.ai',
+    '/dns6/protocol.ai/p2p/QmTysQQiTGMdfRsDQp516oZ9bR3FiSCDnicUnqny2q1d79'
   ]
 
   const goodDNS = [
@@ -46,6 +47,7 @@ describe('multiaddr matcher', () => {
 
   const exactTCP = [
     '/ip4/0.0.7.6/tcp/1234',
+    '/ip4/0.0.7.6/tcp/1234/p2p/QmTysQQiTGMdfRsDQp516oZ9bR3FiSCDnicUnqny2q1d79',
     '/ip6/::/tcp/0',
     '/dns4/protocol.ai/tcp/80',
     '/dns6/protocol.ai/tcp/80',
