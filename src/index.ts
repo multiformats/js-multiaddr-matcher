@@ -286,7 +286,7 @@ const _DNS = and(literal('dns'), string())
  * DNS4.matches(multiaddr('/dns4/example.org')) // true
  * ```
  */
-export const DNS4 = fmt(_DNS4)
+export const DNS4 = fmt(_DNS4, optional(peerId()))
 
 /**
  * Matches dns6 addresses.
@@ -302,7 +302,7 @@ export const DNS4 = fmt(_DNS4)
  * DNS6.matches(multiaddr('/dns6/example.org')) // true
  * ```
  */
-export const DNS6 = fmt(_DNS6)
+export const DNS6 = fmt(_DNS6, optional(peerId()))
 
 /**
  * Matches dnsaddr addresses.
@@ -316,9 +316,10 @@ export const DNS6 = fmt(_DNS6)
  * import { DNSADDR } from '@multiformats/multiaddr-matcher'
  *
  * DNSADDR.matches(multiaddr('/dnsaddr/example.org')) // true
+ * DNSADDR.matches(multiaddr('/dnsaddr/example.org/p2p/Qmfoo')) // true
  * ```
  */
-export const DNSADDR = fmt(_DNSADDR)
+export const DNSADDR = fmt(_DNSADDR, optional(peerId()))
 
 /**
  * Matches any dns address.
@@ -332,21 +333,14 @@ export const DNSADDR = fmt(_DNSADDR)
  * DNS.matches(multiaddr('/dnsaddr/example.org')) // true
  * DNS.matches(multiaddr('/dns4/example.org')) // true
  * DNS.matches(multiaddr('/dns6/example.org')) // true
+ * DNS.matches(multiaddr('/dns6/example.org/p2p/Qmfoo')) // true
  * ```
  */
-export const DNS = fmt(or(
-  _DNS,
-  _DNSADDR,
-  _DNS4,
-  _DNS6
-))
+export const DNS = fmt(or(_DNS, _DNSADDR, _DNS4, _DNS6), optional(peerId()))
 
 const _IP4 = and(literal('ip4'), func(isIPv4))
 const _IP6 = and(literal('ip6'), func(isIPv6))
-const _IP = or(
-  _IP4,
-  _IP6
-)
+const _IP = or(_IP4, _IP6)
 
 const _IP_OR_DOMAIN = or(_IP, _DNS, _DNS4, _DNS6, _DNSADDR)
 
@@ -359,12 +353,13 @@ const _IP_OR_DOMAIN = or(_IP, _DNS, _DNS4, _DNS6, _DNSADDR)
  * import { multiaddr } from '@multiformats/multiaddr'
  * import { IP_OR_DOMAIN } from '@multiformats/multiaddr-matcher'
  *
+ * IP_OR_DOMAIN.matches(multiaddr('/ip4/123.123.123.123')) // true
  * IP_OR_DOMAIN.matches(multiaddr('/ip4/123.123.123.123/p2p/QmFoo')) // true
  * IP_OR_DOMAIN.matches(multiaddr('/dns/example.com/p2p/QmFoo')) // true
  * IP_OR_DOMAIN.matches(multiaddr('/p2p/QmFoo')) // false
  * ```
  */
-export const IP_OR_DOMAIN = fmt(_IP_OR_DOMAIN)
+export const IP_OR_DOMAIN = fmt(or(_IP, and(or(_DNS, _DNSADDR, _DNS4, _DNS6), optional(peerId()))))
 
 /**
  * Matches ip4 addresses.
@@ -432,7 +427,7 @@ const _UDP = and(_IP_OR_DOMAIN, literal('udp'), number())
  * TCP.matches(multiaddr('/ip4/123.123.123.123/tcp/1234')) // true
  * ```
  */
-export const TCP = fmt(_TCP)
+export const TCP = fmt(and(_TCP, optional(peerId())))
 
 /**
  * Matches UDP addresses.
