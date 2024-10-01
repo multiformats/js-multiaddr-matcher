@@ -578,7 +578,10 @@ const _P2P = or(
  */
 export const P2P = fmt(_P2P)
 
-const _Circuit = and(_P2P, literal('p2p-circuit'), peerId())
+const _Circuit = or(
+  and(_P2P, literal('p2p-circuit'), peerId()),
+  and(_P2P, literal('p2p-circuit'), literal('webrtc'), optional(peerId())) // webrtc relay
+)
 
 /**
  * Matches circuit relay addresses
