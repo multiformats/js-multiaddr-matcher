@@ -1,3 +1,9 @@
+## [1.3.0](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.2.6...v1.3.0) (2024-10-11)
+
+### Features
+
+* export functions to make custom matchers ([#38](https://github.com/multiformats/js-multiaddr-matcher/issues/38)) ([ede4bdb](https://github.com/multiformats/js-multiaddr-matcher/commit/ede4bdb99b1fb5ad65acb2cb220c04081e2c0285))
+
 ## [1.2.6](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.2.5...v1.2.6) (2024-09-26)
 
 ### Bug Fixes
