@@ -138,11 +138,7 @@ describe('multiaddr matcher', () => {
     '/dns4/ipfs.io/tls/ws/p2p/QmTysQQiTGMdfRsDQp516oZ9bR3FiSCDnicUnqny2q1d79',
     '/dns6/ipfs.io/tls/ws/p2p/QmTysQQiTGMdfRsDQp516oZ9bR3FiSCDnicUnqny2q1d79',
     '/ip4/1.2.3.4/tcp/3456/tls/ws/p2p/QmTysQQiTGMdfRsDQp516oZ9bR3FiSCDnicUnqny2q1d79',
-    '/ip6/::/tcp/3456/tls/ws/p2p/QmTysQQiTGMdfRsDQp516oZ9bR3FiSCDnicUnqny2q1d79'
-  ]
-
-  const goodWSS = [
-    ...exactWSS,
+    '/ip6/::/tcp/3456/tls/ws/p2p/QmTysQQiTGMdfRsDQp516oZ9bR3FiSCDnicUnqny2q1d79',
     '/ip4/147.75.87.65/tcp/4002/tls/sni/147-75-87-65.k51qzi5uqu5dhb03btheentd9nmkaygwm4q3tfrm596s5thf1u87bc7gq0m2ia.libp2p.direct/ws',
     '/ip4/147.75.87.65/tcp/4002/tls/sni/147-75-87-65.k51qzi5uqu5dhb03btheentd9nmkaygwm4q3tfrm596s5thf1u87bc7gq0m2ia.libp2p.direct/ws/p2p/12D3KooWDpp7U7W9Q8feMZPPEpPP5FKXTUakLgnVLbavfjb9mzrT',
     '/dns4/147-75-80-75.k51qzi5uqu5dho0o9zm90239gjuacg6q1s69e0l1k5ow6kna869fsyb7ukjpeg.libp2p.direct/tcp/4002/tls/ws',
@@ -155,6 +151,10 @@ describe('multiaddr matcher', () => {
     '/dns6/2604-1380-4601-f600--1.k51qzi5uqu5dhb03btheentd9nmkaygwm4q3tfrm596s5thf1u87bc7gq0m2ia.libp2p.direct/tcp/4002/tls/ws/p2p/12D3KooWDpp7U7W9Q8feMZPPEpPP5FKXTUakLgnVLbavfjb9mzrT',
     '/dns/2604-1380-4601-f600--1.k51qzi5uqu5dhb03btheentd9nmkaygwm4q3tfrm596s5thf1u87bc7gq0m2ia.libp2p.direct/tcp/4002/tls/ws',
     '/dns/2604-1380-4601-f600--1.k51qzi5uqu5dhb03btheentd9nmkaygwm4q3tfrm596s5thf1u87bc7gq0m2ia.libp2p.direct/tcp/4002/tls/ws/p2p/12D3KooWDpp7U7W9Q8feMZPPEpPP5FKXTUakLgnVLbavfjb9mzrT'
+  ]
+
+  const goodWSS = [
+    ...exactWSS
   ]
 
   const badWS = [
