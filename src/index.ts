@@ -309,7 +309,7 @@ export const WebSockets = fmt(_WebSockets)
 
 const _WebSocketsSecure = or(
   and(_WEB, literal('wss'), optional(peerId())),
-  and(_WEB, literal('tls'), literal('ws'), optional(peerId()))
+  and(_WEB, literal('tls'), optional(and(literal('sni'), string())), literal('ws'), optional(peerId()))
 )
 
 /**
