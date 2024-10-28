@@ -1,3 +1,9 @@
+## [1.4.0](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.3.0...v1.4.0) (2024-10-28)
+
+### Features
+
+* support sni tuple in wss multiaddr ([#39](https://github.com/multiformats/js-multiaddr-matcher/issues/39)) ([2b687b4](https://github.com/multiformats/js-multiaddr-matcher/commit/2b687b4e3b74e33dadf64cbb58c8c3076e23ed37))
+
 ## [1.3.0](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.2.6...v1.3.0) (2024-10-11)
 
 ### Features
