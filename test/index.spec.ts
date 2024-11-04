@@ -309,6 +309,19 @@ describe('multiaddr matcher', () => {
     '/ip4/0.0.0.0/udp/80/http'
   ]
 
+  const exactUnix = [
+    '/unix/%2Fpath%2Fto%2Funix.socket',
+    '/unix/%2Fpath%2Fto%2Funix.socket/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v'
+  ]
+
+  const goodUnix = [
+    ...exactUnix
+  ]
+
+  const badUnix = [
+    '/ip4/0.0.0.0/tcp/0/https'
+  ]
+
   function assertMatches (p: MultiaddrMatcher, ...tests: string[][]): void {
     tests.forEach((test) => {
       test.forEach((testcase) => {
@@ -415,5 +428,11 @@ describe('multiaddr matcher', () => {
     assertMatches(mafmt.HTTPS, goodHTTPS)
     assertExactMatches(mafmt.HTTPS, exactHTTPS)
     assertMismatches(mafmt.HTTPS, badHTTPS)
+  })
+
+  it('Unix addresses', () => {
+    assertMatches(mafmt.Unix, goodUnix)
+    assertExactMatches(mafmt.Unix, exactUnix)
+    assertMismatches(mafmt.Unix, badUnix)
   })
 })
