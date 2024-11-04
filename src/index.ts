@@ -460,3 +460,21 @@ const _HTTPS = or(
  * ```
  */
 export const HTTPS = fmt(_HTTPS)
+
+const _Memory = or(
+  and(literal('memory'), string(), optional(peerId()))
+)
+
+/**
+ * Matches Memory addresses
+ *
+ * @example
+ *
+ * ```ts
+ * import { multiaddr } from '@multiformats/multiaddr'
+ * import { Memory } from '@multiformats/multiaddr-matcher'
+ *
+ * Memory.matches(multiaddr('/memory/0xDEADBEEF')) // true
+ * ```
+ */
+export const Memory = fmt(_Memory)

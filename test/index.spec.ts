@@ -309,6 +309,20 @@ describe('multiaddr matcher', () => {
     '/ip4/0.0.0.0/udp/80/http'
   ]
 
+  const exactMemory = [
+    '/memory/0xDEADBEEF',
+    '/memory/0xDEADBEEF/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v'
+  ]
+
+  const goodMemory = [
+    ...exactMemory,
+    '/memory/0xDEADBEEF/webrtc/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v'
+  ]
+
+  const badMemory = [
+    '/ip4/0.0.0.0/udp/80/http'
+  ]
+
   function assertMatches (p: MultiaddrMatcher, ...tests: string[][]): void {
     tests.forEach((test) => {
       test.forEach((testcase) => {
@@ -415,5 +429,11 @@ describe('multiaddr matcher', () => {
     assertMatches(mafmt.HTTPS, goodHTTPS)
     assertExactMatches(mafmt.HTTPS, exactHTTPS)
     assertMismatches(mafmt.HTTPS, badHTTPS)
+  })
+
+  it('Memory addresses', () => {
+    assertMatches(mafmt.Memory, goodMemory)
+    assertExactMatches(mafmt.Memory, exactMemory)
+    assertMismatches(mafmt.Memory, badMemory)
   })
 })
