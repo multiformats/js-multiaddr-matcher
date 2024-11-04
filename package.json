@@ -166,6 +166,6 @@
     "multiformats": "^13.0.0"
   },
   "devDependencies": {
-    "aegir": "^44.1.1"
+    "aegir": "^45.0.1"
   }
 }
