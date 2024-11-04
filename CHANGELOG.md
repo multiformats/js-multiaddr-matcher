@@ -1,3 +1,9 @@
+## [1.5.0](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.4.1...v1.5.0) (2024-11-04)
+
+### Features
+
+* add memory address matcher ([#42](https://github.com/multiformats/js-multiaddr-matcher/issues/42)) ([a7a5f2d](https://github.com/multiformats/js-multiaddr-matcher/commit/a7a5f2dcda39910095e2f7a47a1a20a2ebb530e7))
+
 ## [1.4.1](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.4.0...v1.4.1) (2024-11-04)
 
 ### Dependencies
