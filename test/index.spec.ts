@@ -223,13 +223,18 @@ describe('multiaddr matcher', () => {
     '/ip4/0.0.0.0/tcp/4004/webrtc-direct/certhash/uEiAeP0OEmBbGVTH5Bhnm3WopwRNSQ0et46xNkn2dIagnGw/certhash/uEiAeP0OEmBbGVTH5Bhnm3WopwRNSQ0et46xNkn2dIagnGw/p2p/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64'
   ]
 
-  const goodWebRTC = [
+  const exactWebRTC = [
     '/ip4/195.201.24.91/udp/4001/quic-v1/webtransport/certhash/uEiCsrVjg8IHCNqD-5x91Rv6CiOQmvCZBGdjxZQBoFYVo9g/certhash/uEiBdh-sKr7lCAwlJRWkmOM-LwW5jGhqq5J4jM-EEvNLucg/p2p/12D3KooWLBjadARix9eMbThfGjCYTdB3Jq6LZVzkReEYqBCaZPiA/p2p-circuit/webrtc/p2p/12D3KooWHHdY2cWY7HKsTuQeBgDydapRVxy1XGUSzeZXv52vsdav',
     '/ip4/195.201.24.91/udp/4001/quic-v1/webtransport/certhash/uEiCsrVjg8IHCNqD-5x91Rv6CiOQmvCZBGdjxZQBoFYVo9g/certhash/uEiBdh-sKr7lCAwlJRWkmOM-LwW5jGhqq5J4jM-EEvNLucg/p2p/12D3KooWLBjadARix9eMbThfGjCYTdB3Jq6LZVzkReEYqBCaZPiA/p2p-circuit/webrtc',
     '/dnsaddr/example.org/wss/p2p/12D3KooWAzabxK2xhwGQuTUYjbcFT9SZcNvPS1cvj7bPMe2Rh9qF/p2p-circuit/webrtc/p2p/12D3KooWA6L4J1yRwqLwdXPZBxz3UL4E8pEE6AEhFkqDH5LTQyfq',
     '/ip4/127.0.0.1/tcp/59119/ws/p2p/12D3KooWAzabxK2xhwGQuTUYjbcFT9SZcNvPS1cvj7bPMe2Rh9qF/p2p-circuit/webrtc/p2p/12D3KooWA6L4J1yRwqLwdXPZBxz3UL4E8pEE6AEhFkqDH5LTQyfq',
     '/ip4/0.0.0.0/udp/4004/webrtc-direct/certhash/uEiAeP0OEmBbGVTH5Bhnm3WopwRNSQ0et46xNkn2dIagnGw/webrtc',
+    '/webrtc/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v',
     '/webrtc'
+  ]
+
+  const goodWebRTC = [
+    ...exactWebRTC
   ]
 
   const badWebRTC = [
@@ -405,6 +410,7 @@ describe('multiaddr matcher', () => {
 
   it('WebRTC addresses', () => {
     assertMatches(mafmt.WebRTC, goodWebRTC)
+    assertExactMatches(mafmt.WebRTC, exactWebRTC)
     assertMismatches(mafmt.WebRTC, badWebRTC)
   })
 
