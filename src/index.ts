@@ -402,7 +402,7 @@ export const Circuit = fmt(_Circuit)
 const _WebRTC = or(
   and(_P2P, literal('p2p-circuit'), literal('webrtc'), optional(peerId())),
   and(_P2P, literal('webrtc'), optional(peerId())),
-  literal('webrtc')
+  and(literal('webrtc'), optional(peerId()))
 )
 
 /**
