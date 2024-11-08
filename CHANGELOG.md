@@ -1,3 +1,9 @@
+## [1.5.1](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.5.0...v1.5.1) (2024-11-08)
+
+### Bug Fixes
+
+* allow peer id on webrtc address ([#43](https://github.com/multiformats/js-multiaddr-matcher/issues/43)) ([982a4e5](https://github.com/multiformats/js-multiaddr-matcher/commit/982a4e5324ff332c979ccfd5fc8460bac7b91fa4))
+
 ## [1.5.0](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.4.1...v1.5.0) (2024-11-04)
 
 ### Features
