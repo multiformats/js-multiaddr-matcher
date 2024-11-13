@@ -85,7 +85,9 @@ describe('multiaddr matcher', () => {
 
   const exactQUIC = [
     '/ip4/1.2.3.4/udp/1234/quic',
-    '/ip6/::/udp/1234/quic'
+    '/ip4/1.2.3.4/udp/1234/quic/p2p/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64',
+    '/ip6/::/udp/1234/quic',
+    '/ip6/::/udp/1234/quic/p2p/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64'
   ]
 
   const goodQUIC = [
@@ -98,6 +100,30 @@ describe('multiaddr matcher', () => {
     '/ip4/0.0.0.0/tcp/12345/quic',
     '/ip6/1.2.3.4/ip4/0.0.0.0/udp/1234/quic',
     '/quic'
+  ]
+
+  const exactQUICv1 = [
+    '/ip4/1.2.3.4/udp/1234/quic-v1',
+    '/ip4/1.2.3.4/udp/1234/quic-v1/p2p/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64',
+    '/ip6/::/udp/1234/quic-v1',
+    '/ip6/::/udp/1234/quic-v1/p2p/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64'
+  ]
+
+  const goodQUICv1 = [
+    ...exactQUICv1,
+    '/ip4/1.2.3.4/udp/1234/quic-v1/webtransport/certhash/uEiAeP0OEmBbGVTH5Bhnm3WopwRNSQ0et46xNkn2dIagnGw',
+    '/dns/google.com/udp/1234/quic-v1/p2p/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64'
+  ]
+
+  const badQUICv1 = [
+    '/ip4/0.0.0.0/tcp/12345/quic-v1',
+    '/ip6/1.2.3.4/ip4/0.0.0.0/udp/1234/quic-v1',
+    '/quic-v1',
+    '/quic',
+    '/ip4/1.2.3.4/udp/1234/quic',
+    '/ip4/1.2.3.4/udp/1234/quic/p2p/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64',
+    '/ip6/::/udp/1234/quic',
+    '/ip6/::/udp/1234/quic/p2p/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64'
   ]
 
   const exactWS = [
@@ -380,6 +406,12 @@ describe('multiaddr matcher', () => {
     assertMatches(mafmt.QUIC, goodQUIC)
     assertExactMatches(mafmt.QUIC, exactQUIC)
     assertMismatches(mafmt.QUIC, badQUIC)
+  })
+
+  it('QUICv1 addresses', () => {
+    assertMatches(mafmt.QUICV1, goodQUICv1)
+    assertExactMatches(mafmt.QUICV1, exactQUICv1)
+    assertMismatches(mafmt.QUICV1, badQUICv1)
   })
 
   it('WebSockets addresses', () => {

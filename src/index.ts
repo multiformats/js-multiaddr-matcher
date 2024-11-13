@@ -248,8 +248,8 @@ export const TCP = fmt(and(_TCP, optional(peerId())))
  */
 export const UDP = fmt(_UDP)
 
-const _QUIC = and(_UDP, literal('quic'))
-const _QUICV1 = and(_UDP, literal('quic-v1'))
+const _QUIC = and(_UDP, literal('quic'), optional(peerId()))
+const _QUICV1 = and(_UDP, literal('quic-v1'), optional(peerId()))
 
 const QUIC_V0_OR_V1 = or(_QUIC, _QUICV1)
 
