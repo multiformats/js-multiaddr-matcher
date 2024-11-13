@@ -1,3 +1,9 @@
+## [1.6.0](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.5.1...v1.6.0) (2024-11-13)
+
+### Features
+
+* match peer ids in quic addresses ([#44](https://github.com/multiformats/js-multiaddr-matcher/issues/44)) ([b7dbfa0](https://github.com/multiformats/js-multiaddr-matcher/commit/b7dbfa09efaa43250631d65652e135478a24e96d))
+
 ## [1.5.1](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.5.0...v1.5.1) (2024-11-08)
 
 ### Bug Fixes
