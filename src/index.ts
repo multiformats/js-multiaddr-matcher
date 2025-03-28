@@ -70,6 +70,23 @@ export interface MultiaddrMatcher {
 }
 
 /**
+ * Matches PeerId addresses
+ *
+ * @example
+ *
+ * ```ts
+ * import { multiaddr } from '@multiformats/multiaddr'
+ * import { PEER_ID } from '@multiformats/multiaddr-matcher'
+ *
+ * PEER_ID.matches(multiaddr('/p2p/Qmfoo')) // true
+ * PEER_ID.matches(multiaddr('/ipfs/Qmfoo')) // true
+ * ```
+ */
+const _PEER_ID = peerId()
+
+export const PEER_ID = fmt(_PEER_ID)
+
+/**
  * DNS matchers
  */
 const _DNS4 = and(literal('dns4'), string())

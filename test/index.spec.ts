@@ -354,6 +354,22 @@ describe('multiaddr matcher', () => {
     '/ip4/0.0.0.0/udp/80/http'
   ]
 
+  const exactPeer = [
+    '/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v',
+    '/p2p/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64',
+    '/ipfs/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v',
+    '/ipfs/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64'
+  ]
+
+  const goodPeer = [
+    ...exactPeer
+  ]
+
+  const badPeer = [
+    '/ip4/0.0.0.0/udp/80/http',
+    '/memory/0xDEADBEEF'
+  ]
+
   function assertMatches (p: MultiaddrMatcher, ...tests: string[][]): void {
     tests.forEach((test) => {
       test.forEach((testcase) => {
@@ -473,5 +489,11 @@ describe('multiaddr matcher', () => {
     assertMatches(mafmt.Memory, goodMemory)
     assertExactMatches(mafmt.Memory, exactMemory)
     assertMismatches(mafmt.Memory, badMemory)
+  })
+
+  it('PeerID addresses', () => {
+    assertMatches(mafmt.PEER_ID, goodPeer)
+    assertExactMatches(mafmt.PEER_ID, exactPeer)
+    assertMismatches(mafmt.PEER_ID, badPeer)
   })
 })
