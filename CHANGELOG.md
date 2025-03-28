@@ -1,3 +1,9 @@
+## [1.7.0](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.6.0...v1.7.0) (2025-03-28)
+
+### Features
+
+* add matcher for /p2p/Qmfoo addresses ([#46](https://github.com/multiformats/js-multiaddr-matcher/issues/46)) ([9477624](https://github.com/multiformats/js-multiaddr-matcher/commit/947762406135ea3d4f3413f3e654742489e85284))
+
 ## [1.6.0](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.5.1...v1.6.0) (2024-11-13)
 
 ### Features
