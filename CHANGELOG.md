@@ -1,3 +1,9 @@
+## [1.7.1](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.7.0...v1.7.1) (2025-05-13)
+
+### Dependencies
+
+* **dev:** bump aegir from 45.1.4 to 46.0.1 ([#51](https://github.com/multiformats/js-multiaddr-matcher/issues/51)) ([40e7ffe](https://github.com/multiformats/js-multiaddr-matcher/commit/40e7ffec10e830acc17e5342d26591e2a2f1a420))
+
 ## [1.7.0](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.6.0...v1.7.0) (2025-03-28)
 
 ### Features
