@@ -1,3 +1,9 @@
+## [1.7.2](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.7.1...v1.7.2) (2025-05-13)
+
+### Bug Fixes
+
+* support ../tcp/1234/tls/http multiaddrs ([#52](https://github.com/multiformats/js-multiaddr-matcher/issues/52)) ([a8d8607](https://github.com/multiformats/js-multiaddr-matcher/commit/a8d86073603e586797d976724db853f8d17a3f75))
+
 ## [1.7.1](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.7.0...v1.7.1) (2025-05-13)
 
 ### Dependencies
