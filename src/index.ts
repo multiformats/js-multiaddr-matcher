@@ -458,7 +458,8 @@ export const HTTP = fmt(_HTTP)
 const _HTTPS = or(
   and(_IP_OR_DOMAIN, literal('tcp'), or(
     and(literal('443'), literal('http')),
-    and(number(), literal('https'))
+    and(number(), literal('https')),
+    and(number(), literal('tls'), literal('http'))
   ), optional(peerId())),
   and(_IP_OR_DOMAIN, literal('tls'), literal('http'), optional(peerId())),
   and(_IP_OR_DOMAIN, literal('https'), optional(peerId()))

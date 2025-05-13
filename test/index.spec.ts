@@ -328,6 +328,8 @@ describe('multiaddr matcher', () => {
     '/dns6/example.org/tcp/443/http',
     '/dnsaddr/example.org/tcp/443/http',
     '/dns/example.org/tcp/443/http',
+    '/dns/example.org/tcp/7777/tls/http',
+    '/dns/example.org/tcp/443/tls/http',
     '/dns4/example.org/tls/http',
     '/dns/example.org/tls/http/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v'
   ]
