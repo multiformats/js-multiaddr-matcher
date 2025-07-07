@@ -56,7 +56,7 @@ describe('multiaddr matcher', () => {
 
   const goodTCP = [
     ...exactTCP,
-    '/ip4/0.0.7.6/tcp/wss',
+    '/ip4/0.0.7.6/tcp/0/wss',
     '/ip6/::/tcp/0/p2p/QmTysQQiTGMdfRsDQp516oZ9bR3FiSCDnicUnqny2q1d79/p2p-circuit/p2p/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64',
     '/dns4/protocol.ai/tcp/80/webrtc'
   ]
@@ -98,7 +98,7 @@ describe('multiaddr matcher', () => {
 
   const badQUIC = [
     '/ip4/0.0.0.0/tcp/12345/quic',
-    '/ip6/1.2.3.4/ip4/0.0.0.0/udp/1234/quic',
+    '/ip6/fc00::/ip4/0.0.0.0/udp/1234/quic',
     '/quic'
   ]
 
@@ -117,7 +117,7 @@ describe('multiaddr matcher', () => {
 
   const badQUICv1 = [
     '/ip4/0.0.0.0/tcp/12345/quic-v1',
-    '/ip6/1.2.3.4/ip4/0.0.0.0/udp/1234/quic-v1',
+    '/ip6/fc00::/ip4/0.0.0.0/udp/1234/quic-v1',
     '/quic-v1',
     '/quic',
     '/ip4/1.2.3.4/udp/1234/quic',
@@ -264,7 +264,7 @@ describe('multiaddr matcher', () => {
   ]
 
   const badWebRTC = [
-    '/ip4/0.0.0.0/udp/webrtc',
+    '/ip4/0.0.0.0/udp/0/webrtc',
     '/ip4/0.0.0.0/tcp/12345/udp/2222/wss/webrtc'
   ]
 
@@ -296,7 +296,7 @@ describe('multiaddr matcher', () => {
   const badIPorDomain = [
     '/webrtc/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v',
     '/quic',
-    '/unix/var/log'
+    '/unix/var%2Flog'
   ]
 
   const exactHTTP = [
