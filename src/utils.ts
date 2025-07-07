@@ -44,6 +44,9 @@ export const value = (code: number, value?: string): Matcher => {
   }
 }
 
+/**
+ * An optional matcher
+ */
 export const optional = (matcher: Matcher): Matcher => {
   return {
     match: (vals) => {
@@ -58,6 +61,9 @@ export const optional = (matcher: Matcher): Matcher => {
   }
 }
 
+/**
+ * Matches any one of the passed matches
+ */
 export const or = (...matchers: Matcher[]): Matcher => {
   return {
     match: (vals) => {
@@ -86,6 +92,9 @@ export const or = (...matchers: Matcher[]): Matcher => {
   }
 }
 
+/**
+ * Matches all of the passed matchers
+ */
 export const and = (...matchers: Matcher[]): Matcher => {
   return {
     match: (vals) => {
@@ -106,6 +115,9 @@ export const and = (...matchers: Matcher[]): Matcher => {
   }
 }
 
+/**
+ * Create a multiaddr matcher from the passed component matchers
+ */
 export function fmt (...matchers: Matcher[]): MultiaddrMatcher {
   function match (ma: Multiaddr): Component[] | false {
     let parts = ma.getComponents()
