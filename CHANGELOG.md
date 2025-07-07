@@ -1,3 +1,13 @@
+## [2.0.0](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.8.0...v2.0.0) (2025-07-07)
+
+### ⚠ BREAKING CHANGES
+
+* compare component codes instead of strings (#60)
+
+### Features
+
+* compare component codes instead of strings ([#60](https://github.com/multiformats/js-multiaddr-matcher/issues/60)) ([579e251](https://github.com/multiformats/js-multiaddr-matcher/commit/579e251df2f04baf02b528fc78f90682bbd5d181))
+
 ## [1.8.0](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.7.2...v1.8.0) (2025-07-07)
 
 ### Features
