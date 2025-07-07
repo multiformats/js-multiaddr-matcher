@@ -496,3 +496,21 @@ const _Memory = or(
  * ```
  */
 export const Memory = fmt(_Memory)
+
+const _Unix = or(
+  and(literal('unix'), string(), optional(peerId()))
+)
+
+/**
+ * Matches Unix addresses
+ *
+ * @example
+ *
+ * ```ts
+ * import { multiaddr } from '@multiformats/multiaddr'
+ * import { Unix } from '@multiformats/multiaddr-matcher'
+ *
+ * Unix.matches(multiaddr('/unix/%2Fpath%2Fto%2Funix.socket')) // true
+ * ```
+ */
+export const Unix = fmt(_Unix)
