@@ -1,3 +1,13 @@
+## [1.8.0](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.7.2...v1.8.0) (2025-07-07)
+
+### Features
+
+* add unix address matchers ([#41](https://github.com/multiformats/js-multiaddr-matcher/issues/41)) ([4d5197a](https://github.com/multiformats/js-multiaddr-matcher/commit/4d5197aa5b15c607c05a470f061a2427b7caad67))
+
+### Trivial Changes
+
+* bump aegir from 46.0.5 to 47.0.19 ([#59](https://github.com/multiformats/js-multiaddr-matcher/issues/59)) ([fbc637b](https://github.com/multiformats/js-multiaddr-matcher/commit/fbc637bbcc277dc1ba7379a40b6dfa860ac4dc90))
+
 ## [1.7.2](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.7.1...v1.7.2) (2025-05-13)
 
 ### Bug Fixes
