@@ -1,6 +1,9 @@
 import type { Matcher, MultiaddrMatcher } from './index.js'
 import type { Multiaddr, Component } from '@multiformats/multiaddr'
 
+/**
+ * Matches a multiaddr component with the specified code but no value
+ */
 export const code = (code: number): Matcher => {
   return {
     match: (vals) => {
@@ -11,11 +14,14 @@ export const code = (code: number): Matcher => {
       }
 
       return vals.slice(1)
-    },
-    pattern: '/p2p/{peerid}'
+    }
   }
 }
 
+/**
+ * Matches a multiaddr component with the specified code and value. If the value
+ * is omitted any non-undefined value is matched.
+ */
 export const value = (code: number, value?: string): Matcher => {
   return {
     match: (vals) => {
@@ -34,8 +40,7 @@ export const value = (code: number, value?: string): Matcher => {
       }
 
       return vals.slice(1)
-    },
-    pattern: '/p2p/{peerid}'
+    }
   }
 }
 
@@ -49,8 +54,7 @@ export const optional = (matcher: Matcher): Matcher => {
       }
 
       return result
-    },
-    pattern: `optional(${matcher.pattern})`
+    }
   }
 }
 
@@ -78,8 +82,7 @@ export const or = (...matchers: Matcher[]): Matcher => {
       }
 
       return matches
-    },
-    pattern: `or(${matchers.map(m => m.pattern).join(', ')})`
+    }
   }
 }
 
@@ -99,8 +102,7 @@ export const and = (...matchers: Matcher[]): Matcher => {
       }
 
       return vals
-    },
-    pattern: `and(${matchers.map(m => m.pattern).join(', ')})`
+    }
   }
 }
 

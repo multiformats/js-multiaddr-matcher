@@ -42,7 +42,6 @@ import type { Multiaddr, Component } from '@multiformats/multiaddr'
  */
 export interface Matcher {
   match(parts: Component[]): Component[] | false
-  pattern: string
 }
 
 /**
