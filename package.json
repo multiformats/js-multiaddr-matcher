@@ -52,13 +52,6 @@
       "import": "./dist/src/utils.js"
     }
   },
-  "eslintConfig": {
-    "extends": "ipfs",
-    "parserOptions": {
-      "project": true,
-      "sourceType": "module"
-    }
-  },
   "release": {
     "branches": [
       "main"
@@ -174,6 +167,6 @@
     "multiformats": "^13.0.0"
   },
   "devDependencies": {
-    "aegir": "^46.0.1"
+    "aegir": "^47.0.19"
   }
 }
