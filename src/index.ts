@@ -489,6 +489,7 @@ const _Memory = or(
  * @example
  *
  * ```ts
+ * import { multiaddr } from '@multiformats/multiaddr'
  * import { Memory } from '@multiformats/multiaddr-matcher'
  *
  * Memory.matches(multiaddr('/memory/0xDEADBEEF')) // true
