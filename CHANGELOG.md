@@ -1,3 +1,9 @@
+## [2.0.1](https://github.com/multiformats/js-multiaddr-matcher/compare/v2.0.0...v2.0.1) (2025-07-07)
+
+### Bug Fixes
+
+* match ip6 zones and ip cidr in ip matchers ([#61](https://github.com/multiformats/js-multiaddr-matcher/issues/61)) ([d12e9ef](https://github.com/multiformats/js-multiaddr-matcher/commit/d12e9efdf606b682951f70f080ea56d3a9bc7387))
+
 ## [2.0.0](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.8.0...v2.0.0) (2025-07-07)
 
 ### ⚠ BREAKING CHANGES
