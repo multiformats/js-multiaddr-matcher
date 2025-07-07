@@ -56,7 +56,7 @@ describe('multiaddr matcher', () => {
 
   const goodTCP = [
     ...exactTCP,
-    '/ip4/0.0.7.6/tcp/wss',
+    '/ip4/0.0.7.6/tcp/0/wss',
     '/ip6/::/tcp/0/p2p/QmTysQQiTGMdfRsDQp516oZ9bR3FiSCDnicUnqny2q1d79/p2p-circuit/p2p/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64',
     '/dns4/protocol.ai/tcp/80/webrtc'
   ]
@@ -85,7 +85,9 @@ describe('multiaddr matcher', () => {
 
   const exactQUIC = [
     '/ip4/1.2.3.4/udp/1234/quic',
-    '/ip6/::/udp/1234/quic'
+    '/ip4/1.2.3.4/udp/1234/quic/p2p/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64',
+    '/ip6/::/udp/1234/quic',
+    '/ip6/::/udp/1234/quic/p2p/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64'
   ]
 
   const goodQUIC = [
@@ -96,8 +98,32 @@ describe('multiaddr matcher', () => {
 
   const badQUIC = [
     '/ip4/0.0.0.0/tcp/12345/quic',
-    '/ip6/1.2.3.4/ip4/0.0.0.0/udp/1234/quic',
+    '/ip6/fc00::/ip4/0.0.0.0/udp/1234/quic',
     '/quic'
+  ]
+
+  const exactQUICv1 = [
+    '/ip4/1.2.3.4/udp/1234/quic-v1',
+    '/ip4/1.2.3.4/udp/1234/quic-v1/p2p/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64',
+    '/ip6/::/udp/1234/quic-v1',
+    '/ip6/::/udp/1234/quic-v1/p2p/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64'
+  ]
+
+  const goodQUICv1 = [
+    ...exactQUICv1,
+    '/ip4/1.2.3.4/udp/1234/quic-v1/webtransport/certhash/uEiAeP0OEmBbGVTH5Bhnm3WopwRNSQ0et46xNkn2dIagnGw',
+    '/dns/google.com/udp/1234/quic-v1/p2p/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64'
+  ]
+
+  const badQUICv1 = [
+    '/ip4/0.0.0.0/tcp/12345/quic-v1',
+    '/ip6/fc00::/ip4/0.0.0.0/udp/1234/quic-v1',
+    '/quic-v1',
+    '/quic',
+    '/ip4/1.2.3.4/udp/1234/quic',
+    '/ip4/1.2.3.4/udp/1234/quic/p2p/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64',
+    '/ip6/::/udp/1234/quic',
+    '/ip6/::/udp/1234/quic/p2p/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64'
   ]
 
   const exactWS = [
@@ -223,17 +249,22 @@ describe('multiaddr matcher', () => {
     '/ip4/0.0.0.0/tcp/4004/webrtc-direct/certhash/uEiAeP0OEmBbGVTH5Bhnm3WopwRNSQ0et46xNkn2dIagnGw/certhash/uEiAeP0OEmBbGVTH5Bhnm3WopwRNSQ0et46xNkn2dIagnGw/p2p/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64'
   ]
 
-  const goodWebRTC = [
+  const exactWebRTC = [
     '/ip4/195.201.24.91/udp/4001/quic-v1/webtransport/certhash/uEiCsrVjg8IHCNqD-5x91Rv6CiOQmvCZBGdjxZQBoFYVo9g/certhash/uEiBdh-sKr7lCAwlJRWkmOM-LwW5jGhqq5J4jM-EEvNLucg/p2p/12D3KooWLBjadARix9eMbThfGjCYTdB3Jq6LZVzkReEYqBCaZPiA/p2p-circuit/webrtc/p2p/12D3KooWHHdY2cWY7HKsTuQeBgDydapRVxy1XGUSzeZXv52vsdav',
     '/ip4/195.201.24.91/udp/4001/quic-v1/webtransport/certhash/uEiCsrVjg8IHCNqD-5x91Rv6CiOQmvCZBGdjxZQBoFYVo9g/certhash/uEiBdh-sKr7lCAwlJRWkmOM-LwW5jGhqq5J4jM-EEvNLucg/p2p/12D3KooWLBjadARix9eMbThfGjCYTdB3Jq6LZVzkReEYqBCaZPiA/p2p-circuit/webrtc',
     '/dnsaddr/example.org/wss/p2p/12D3KooWAzabxK2xhwGQuTUYjbcFT9SZcNvPS1cvj7bPMe2Rh9qF/p2p-circuit/webrtc/p2p/12D3KooWA6L4J1yRwqLwdXPZBxz3UL4E8pEE6AEhFkqDH5LTQyfq',
     '/ip4/127.0.0.1/tcp/59119/ws/p2p/12D3KooWAzabxK2xhwGQuTUYjbcFT9SZcNvPS1cvj7bPMe2Rh9qF/p2p-circuit/webrtc/p2p/12D3KooWA6L4J1yRwqLwdXPZBxz3UL4E8pEE6AEhFkqDH5LTQyfq',
     '/ip4/0.0.0.0/udp/4004/webrtc-direct/certhash/uEiAeP0OEmBbGVTH5Bhnm3WopwRNSQ0et46xNkn2dIagnGw/webrtc',
+    '/webrtc/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v',
     '/webrtc'
   ]
 
+  const goodWebRTC = [
+    ...exactWebRTC
+  ]
+
   const badWebRTC = [
-    '/ip4/0.0.0.0/udp/webrtc',
+    '/ip4/0.0.0.0/udp/0/webrtc',
     '/ip4/0.0.0.0/tcp/12345/udp/2222/wss/webrtc'
   ]
 
@@ -265,7 +296,7 @@ describe('multiaddr matcher', () => {
   const badIPorDomain = [
     '/webrtc/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v',
     '/quic',
-    '/unix/var/log'
+    '/unix/var%2Flog'
   ]
 
   const exactHTTP = [
@@ -297,6 +328,8 @@ describe('multiaddr matcher', () => {
     '/dns6/example.org/tcp/443/http',
     '/dnsaddr/example.org/tcp/443/http',
     '/dns/example.org/tcp/443/http',
+    '/dns/example.org/tcp/7777/tls/http',
+    '/dns/example.org/tcp/443/tls/http',
     '/dns4/example.org/tls/http',
     '/dns/example.org/tls/http/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v'
   ]
@@ -321,6 +354,22 @@ describe('multiaddr matcher', () => {
 
   const badMemory = [
     '/ip4/0.0.0.0/udp/80/http'
+  ]
+
+  const exactPeer = [
+    '/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v',
+    '/p2p/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64',
+    '/ipfs/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v',
+    '/ipfs/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64'
+  ]
+
+  const goodPeer = [
+    ...exactPeer
+  ]
+
+  const badPeer = [
+    '/ip4/0.0.0.0/udp/80/http',
+    '/memory/0xDEADBEEF'
   ]
 
   const exactUnix = [
@@ -390,6 +439,12 @@ describe('multiaddr matcher', () => {
     assertMismatches(mafmt.QUIC, badQUIC)
   })
 
+  it('QUICv1 addresses', () => {
+    assertMatches(mafmt.QUICV1, goodQUICv1)
+    assertExactMatches(mafmt.QUICV1, exactQUICv1)
+    assertMismatches(mafmt.QUICV1, badQUICv1)
+  })
+
   it('WebSockets addresses', () => {
     assertMatches(mafmt.WebSockets, goodWS)
     assertExactMatches(mafmt.WebSockets, exactWS)
@@ -418,6 +473,7 @@ describe('multiaddr matcher', () => {
 
   it('WebRTC addresses', () => {
     assertMatches(mafmt.WebRTC, goodWebRTC)
+    assertExactMatches(mafmt.WebRTC, exactWebRTC)
     assertMismatches(mafmt.WebRTC, badWebRTC)
   })
 
@@ -448,6 +504,12 @@ describe('multiaddr matcher', () => {
     assertMatches(mafmt.Memory, goodMemory)
     assertExactMatches(mafmt.Memory, exactMemory)
     assertMismatches(mafmt.Memory, badMemory)
+  })
+
+  it('PeerID addresses', () => {
+    assertMatches(mafmt.PEER_ID, goodPeer)
+    assertExactMatches(mafmt.PEER_ID, exactPeer)
+    assertMismatches(mafmt.PEER_ID, badPeer)
   })
 
   it('Unix addresses', () => {

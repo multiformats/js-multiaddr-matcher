@@ -70,6 +70,23 @@ export interface MultiaddrMatcher {
 }
 
 /**
+ * Matches PeerId addresses
+ *
+ * @example
+ *
+ * ```ts
+ * import { multiaddr } from '@multiformats/multiaddr'
+ * import { PEER_ID } from '@multiformats/multiaddr-matcher'
+ *
+ * PEER_ID.matches(multiaddr('/p2p/Qmfoo')) // true
+ * PEER_ID.matches(multiaddr('/ipfs/Qmfoo')) // true
+ * ```
+ */
+const _PEER_ID = peerId()
+
+export const PEER_ID = fmt(_PEER_ID)
+
+/**
  * DNS matchers
  */
 const _DNS4 = and(literal('dns4'), string())
@@ -248,8 +265,8 @@ export const TCP = fmt(and(_TCP, optional(peerId())))
  */
 export const UDP = fmt(_UDP)
 
-const _QUIC = and(_UDP, literal('quic'))
-const _QUICV1 = and(_UDP, literal('quic-v1'))
+const _QUIC = and(_UDP, literal('quic'), optional(peerId()))
+const _QUICV1 = and(_UDP, literal('quic-v1'), optional(peerId()))
 
 const QUIC_V0_OR_V1 = or(_QUIC, _QUICV1)
 
@@ -402,7 +419,7 @@ export const Circuit = fmt(_Circuit)
 const _WebRTC = or(
   and(_P2P, literal('p2p-circuit'), literal('webrtc'), optional(peerId())),
   and(_P2P, literal('webrtc'), optional(peerId())),
-  literal('webrtc')
+  and(literal('webrtc'), optional(peerId()))
 )
 
 /**
@@ -441,7 +458,8 @@ export const HTTP = fmt(_HTTP)
 const _HTTPS = or(
   and(_IP_OR_DOMAIN, literal('tcp'), or(
     and(literal('443'), literal('http')),
-    and(number(), literal('https'))
+    and(number(), literal('https')),
+    and(number(), literal('tls'), literal('http'))
   ), optional(peerId())),
   and(_IP_OR_DOMAIN, literal('tls'), literal('http'), optional(peerId())),
   and(_IP_OR_DOMAIN, literal('https'), optional(peerId()))

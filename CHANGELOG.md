@@ -1,3 +1,39 @@
+## [1.7.2](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.7.1...v1.7.2) (2025-05-13)
+
+### Bug Fixes
+
+* support ../tcp/1234/tls/http multiaddrs ([#52](https://github.com/multiformats/js-multiaddr-matcher/issues/52)) ([a8d8607](https://github.com/multiformats/js-multiaddr-matcher/commit/a8d86073603e586797d976724db853f8d17a3f75))
+
+## [1.7.1](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.7.0...v1.7.1) (2025-05-13)
+
+### Dependencies
+
+* **dev:** bump aegir from 45.1.4 to 46.0.1 ([#51](https://github.com/multiformats/js-multiaddr-matcher/issues/51)) ([40e7ffe](https://github.com/multiformats/js-multiaddr-matcher/commit/40e7ffec10e830acc17e5342d26591e2a2f1a420))
+
+## [1.7.0](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.6.0...v1.7.0) (2025-03-28)
+
+### Features
+
+* add matcher for /p2p/Qmfoo addresses ([#46](https://github.com/multiformats/js-multiaddr-matcher/issues/46)) ([9477624](https://github.com/multiformats/js-multiaddr-matcher/commit/947762406135ea3d4f3413f3e654742489e85284))
+
+## [1.6.0](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.5.1...v1.6.0) (2024-11-13)
+
+### Features
+
+* match peer ids in quic addresses ([#44](https://github.com/multiformats/js-multiaddr-matcher/issues/44)) ([b7dbfa0](https://github.com/multiformats/js-multiaddr-matcher/commit/b7dbfa09efaa43250631d65652e135478a24e96d))
+
+## [1.5.1](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.5.0...v1.5.1) (2024-11-08)
+
+### Bug Fixes
+
+* allow peer id on webrtc address ([#43](https://github.com/multiformats/js-multiaddr-matcher/issues/43)) ([982a4e5](https://github.com/multiformats/js-multiaddr-matcher/commit/982a4e5324ff332c979ccfd5fc8460bac7b91fa4))
+
+## [1.5.0](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.4.1...v1.5.0) (2024-11-04)
+
+### Features
+
+* add memory address matcher ([#42](https://github.com/multiformats/js-multiaddr-matcher/issues/42)) ([a7a5f2d](https://github.com/multiformats/js-multiaddr-matcher/commit/a7a5f2dcda39910095e2f7a47a1a20a2ebb530e7))
+
 ## [1.4.1](https://github.com/multiformats/js-multiaddr-matcher/compare/v1.4.0...v1.4.1) (2024-11-04)
 
 ### Dependencies
