@@ -440,9 +440,9 @@ describe('multiaddr matcher', () => {
   })
 
   it('QUICv1 addresses', () => {
-    assertMatches(mafmt.QUICV1, goodQUICv1)
-    assertExactMatches(mafmt.QUICV1, exactQUICv1)
-    assertMismatches(mafmt.QUICV1, badQUICv1)
+    assertMatches(mafmt.QUIC_V1, goodQUICv1)
+    assertExactMatches(mafmt.QUIC_V1, exactQUICv1)
+    assertMismatches(mafmt.QUIC_V1, badQUICv1)
   })
 
   it('WebSockets addresses', () => {

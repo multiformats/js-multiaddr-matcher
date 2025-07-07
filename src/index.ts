@@ -32,9 +32,9 @@
  * ```
  */
 
-import { isIPv4, isIPv6 } from '@chainsafe/is-ip'
-import { and, or, optional, fmt, func, code, value } from './utils.js'
-import { type Multiaddr, type Component, CODE_P2P, CODE_DNS4, CODE_DNS6, CODE_DNSADDR, CODE_DNS, CODE_IP4, CODE_IP6, CODE_TCP, CODE_UDP, CODE_QUIC, CODE_QUIC_V1, CODE_WS, CODE_WSS, CODE_TLS, CODE_SNI, CODE_WEBRTC_DIRECT, CODE_CERTHASH, CODE_WEBTRANSPORT, CODE_P2P_CIRCUIT, CODE_WEBRTC, CODE_HTTP, CODE_UNIX, CODE_HTTPS, CODE_MEMORY } from '@multiformats/multiaddr'
+import { CODE_P2P, CODE_DNS4, CODE_DNS6, CODE_DNSADDR, CODE_DNS, CODE_IP4, CODE_IP6, CODE_TCP, CODE_UDP, CODE_QUIC, CODE_QUIC_V1, CODE_WS, CODE_WSS, CODE_TLS, CODE_SNI, CODE_WEBRTC_DIRECT, CODE_CERTHASH, CODE_WEBTRANSPORT, CODE_P2P_CIRCUIT, CODE_WEBRTC, CODE_HTTP, CODE_UNIX, CODE_HTTPS, CODE_MEMORY } from '@multiformats/multiaddr'
+import { and, or, optional, fmt, code, value } from './utils.js'
+import type { Multiaddr, Component } from '@multiformats/multiaddr'
 
 /**
  * A matcher accepts multiaddr components and either fails to match and returns
@@ -291,13 +291,12 @@ export const QUIC = fmt(_QUIC)
  *
  * ```ts
  * import { multiaddr } from '@multiformats/multiaddr'
- * import { QUICV1 } from '@multiformats/multiaddr-matcher'
+ * import { QUIC_V1 } from '@multiformats/multiaddr-matcher'
  *
- * QUICV1.matches(multiaddr('/ip4/123.123.123.123/udp/1234/quic-v1')) // true
+ * QUIC_V1.matches(multiaddr('/ip4/123.123.123.123/udp/1234/quic-v1')) // true
  * ```
  */
 export const QUIC_V1 = fmt(_QUIC_V1)
-export const QUICV1 = QUIC_V1
 
 const _WEB = or(
   _IP_OR_DOMAIN,
@@ -464,7 +463,7 @@ const _HTTPS = and(_IP_OR_DOMAIN, or(
   code(CODE_TLS),
   code(CODE_HTTPS)
 ),
-    optional(value(CODE_P2P))
+optional(value(CODE_P2P))
 )
 
 /**

@@ -1,22 +1,5 @@
 import type { Matcher, MultiaddrMatcher } from './index.js'
-import { type Multiaddr, type Component, CODE_P2P, CODE_CERTHASH } from '@multiformats/multiaddr'
-
-export const func = (fn: (val: Component) => boolean): Matcher => {
-  return {
-    match: (vals) => {
-      if (vals.length < 1) {
-        return false
-      }
-
-      if (fn(vals[0])) {
-        return vals.slice(1)
-      }
-
-      return false
-    },
-    pattern: 'fn'
-  }
-}
+import type { Multiaddr, Component } from '@multiformats/multiaddr'
 
 export const code = (code: number): Matcher => {
   return {

@@ -162,9 +162,7 @@
     "docs": "aegir docs"
   },
   "dependencies": {
-    "@chainsafe/is-ip": "^2.0.1",
-    "@multiformats/multiaddr": "^12.0.0",
-    "multiformats": "^13.0.0"
+    "@multiformats/multiaddr": "^12.0.0"
   },
   "devDependencies": {
     "aegir": "^47.0.19"
