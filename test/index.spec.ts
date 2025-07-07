@@ -28,17 +28,19 @@ describe('multiaddr matcher', () => {
   const exactIP = [
     '/ip4/0.0.0.0',
     '/ip6/fc00::',
-    '/ip6/fe80::8cb1:25ff:fec5:28e3'
-    // https://github.com/ChainSafe/is-ip/issues/9
-    // '/ip6/fe80::8cb1:25ff:fec5:28e3%llw0'
+    '/ip6/fe80::8cb1:25ff:fec5:28e3',
+    '/ip6/fe80::1cc1:a3b8:322f:cf22/ipcidr/24',
+    '/ip6zone/utun0/ip6/fe80::1cc1:a3b8:322f:cf22',
+    '/ip6zone/llw0/ip6/fe80::1cc1:a3b8:322f:cf22/ipcidr/24'
   ]
 
   const goodIP = [
     ...exactIP,
     '/ip4/123.123.123.123/tcp/80',
-    '/ip6/fe80::1cc1:a3b8:322f:cf22/udp/4921/wss'
-    // https://github.com/ChainSafe/is-ip/issues/9
-    // '/ip6/fe80::1cc1:a3b8:322f:cf22%utun0/udp/4921/wss'
+    '/ip6/fe80::1cc1:a3b8:322f:cf22/udp/4921/wss',
+    '/ip6/fe80::1cc1:a3b8:322f:cf22/ipcidr/24/tcp/1234/tls/ws',
+    '/ip6zone/utun0/ip6/fe80::1cc1:a3b8:322f:cf22/udp/4921',
+    '/ip6zone/llw0/ip6/fe80::1cc1:a3b8:322f:cf22/ipcidr/24/udp/4921'
   ]
 
   const badIP = [
