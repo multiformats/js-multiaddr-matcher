@@ -1,16 +1,7 @@
-import { base58btc } from 'multiformats/bases/base58'
-import { base64url } from 'multiformats/bases/base64'
 import type { Matcher, MultiaddrMatcher } from './index.js'
-import type { Multiaddr } from '@multiformats/multiaddr'
+import { type Multiaddr, type Component, CODE_P2P, CODE_CERTHASH } from '@multiformats/multiaddr'
 
-/**
- * Split a multiaddr into path components
- */
-const toParts = (ma: Multiaddr): string[] => {
-  return ma.toString().split('/').slice(1)
-}
-
-export const func = (fn: (val: string) => boolean): Matcher => {
+export const func = (fn: (val: Component) => boolean): Matcher => {
   return {
     match: (vals) => {
       if (vals.length < 1) {
@@ -27,75 +18,41 @@ export const func = (fn: (val: string) => boolean): Matcher => {
   }
 }
 
-export const literal = (str: string): Matcher => {
-  return {
-    match: (vals) => func((val) => val === str).match(vals),
-    pattern: str
-  }
-}
-
-export const string = (): Matcher => {
-  return {
-    match: (vals) => func((val) => typeof val === 'string').match(vals),
-    pattern: '{string}'
-  }
-}
-
-export const number = (): Matcher => {
-  return {
-    match: (vals) => func((val) => !isNaN(parseInt(val))).match(vals),
-    pattern: '{number}'
-  }
-}
-
-export const peerId = (): Matcher => {
+export const code = (code: number): Matcher => {
   return {
     match: (vals) => {
-      if (vals.length < 2) {
+      const component = vals[0]
+
+      if (component?.code !== code) {
         return false
       }
 
-      if (vals[0] !== 'p2p' && vals[0] !== 'ipfs') {
-        return false
-      }
-
-      // Q is RSA, 1 is Ed25519 or Secp256k1
-      if (vals[1].startsWith('Q') || vals[1].startsWith('1')) {
-        try {
-          base58btc.decode(`z${vals[1]}`)
-        } catch (err) {
-          return false
-        }
-      } else {
-        return false
-      }
-
-      return vals.slice(2)
+      return vals.slice(1)
     },
     pattern: '/p2p/{peerid}'
   }
 }
 
-export const certhash = (): Matcher => {
+export const value = (code: number, value?: string): Matcher => {
   return {
     match: (vals) => {
-      if (vals.length < 2) {
+      const component = vals[0]
+
+      if (component?.code !== code) {
         return false
       }
 
-      if (vals[0] !== 'certhash') {
+      if (component.value == null) {
         return false
       }
 
-      try {
-        base64url.decode(vals[1])
-      } catch {
+      if (value != null && component.value !== value) {
         return false
       }
 
-      return vals.slice(2)
+      return vals.slice(1)
     },
-    pattern: '/certhash/{certhash}'
+    pattern: '/p2p/{peerid}'
   }
 }
 
@@ -117,7 +74,7 @@ export const optional = (matcher: Matcher): Matcher => {
 export const or = (...matchers: Matcher[]): Matcher => {
   return {
     match: (vals) => {
-      let matches: string[] | undefined
+      let matches: Component[] | undefined
 
       for (const matcher of matchers) {
         const result = matcher.match(vals)
@@ -165,8 +122,8 @@ export const and = (...matchers: Matcher[]): Matcher => {
 }
 
 export function fmt (...matchers: Matcher[]): MultiaddrMatcher {
-  function match (ma: Multiaddr): string[] | false {
-    let parts = toParts(ma)
+  function match (ma: Multiaddr): Component[] | false {
+    let parts = ma.getComponents()
 
     for (const matcher of matchers) {
       const result = matcher.match(parts)

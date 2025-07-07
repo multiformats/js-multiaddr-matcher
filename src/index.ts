@@ -33,15 +33,15 @@
  */
 
 import { isIPv4, isIPv6 } from '@chainsafe/is-ip'
-import { and, or, literal, string, peerId, optional, fmt, func, number, certhash } from './utils.js'
-import type { Multiaddr } from '@multiformats/multiaddr'
+import { and, or, optional, fmt, func, code, value } from './utils.js'
+import { type Multiaddr, type Component, CODE_P2P, CODE_DNS4, CODE_DNS6, CODE_DNSADDR, CODE_DNS, CODE_IP4, CODE_IP6, CODE_TCP, CODE_UDP, CODE_QUIC, CODE_QUIC_V1, CODE_WS, CODE_WSS, CODE_TLS, CODE_SNI, CODE_WEBRTC_DIRECT, CODE_CERTHASH, CODE_WEBTRANSPORT, CODE_P2P_CIRCUIT, CODE_WEBRTC, CODE_HTTP, CODE_UNIX, CODE_HTTPS, CODE_MEMORY } from '@multiformats/multiaddr'
 
 /**
  * A matcher accepts multiaddr components and either fails to match and returns
  * false or returns a sublist of unmatched components
  */
 export interface Matcher {
-  match(parts: string[]): string[] | false
+  match(parts: Component[]): Component[] | false
   pattern: string
 }
 
@@ -82,17 +82,17 @@ export interface MultiaddrMatcher {
  * PEER_ID.matches(multiaddr('/ipfs/Qmfoo')) // true
  * ```
  */
-const _PEER_ID = peerId()
+const _PEER_ID = value(CODE_P2P)
 
 export const PEER_ID = fmt(_PEER_ID)
 
 /**
  * DNS matchers
  */
-const _DNS4 = and(literal('dns4'), string())
-const _DNS6 = and(literal('dns6'), string())
-const _DNSADDR = and(literal('dnsaddr'), string())
-const _DNS = and(literal('dns'), string())
+const _DNS4 = value(CODE_DNS4)
+const _DNS6 = value(CODE_DNS6)
+const _DNSADDR = value(CODE_DNSADDR)
+const _DNS = value(CODE_DNS)
 
 /**
  * Matches dns4 addresses.
@@ -108,7 +108,7 @@ const _DNS = and(literal('dns'), string())
  * DNS4.matches(multiaddr('/dns4/example.org')) // true
  * ```
  */
-export const DNS4 = fmt(_DNS4, optional(peerId()))
+export const DNS4 = fmt(_DNS4, optional(value(CODE_P2P)))
 
 /**
  * Matches dns6 addresses.
@@ -124,7 +124,7 @@ export const DNS4 = fmt(_DNS4, optional(peerId()))
  * DNS6.matches(multiaddr('/dns6/example.org')) // true
  * ```
  */
-export const DNS6 = fmt(_DNS6, optional(peerId()))
+export const DNS6 = fmt(_DNS6, optional(value(CODE_P2P)))
 
 /**
  * Matches dnsaddr addresses.
@@ -141,7 +141,7 @@ export const DNS6 = fmt(_DNS6, optional(peerId()))
  * DNSADDR.matches(multiaddr('/dnsaddr/example.org/p2p/Qmfoo')) // true
  * ```
  */
-export const DNSADDR = fmt(_DNSADDR, optional(peerId()))
+export const DNSADDR = fmt(_DNSADDR, optional(value(CODE_P2P)))
 
 /**
  * Matches any dns address.
@@ -158,10 +158,10 @@ export const DNSADDR = fmt(_DNSADDR, optional(peerId()))
  * DNS.matches(multiaddr('/dns6/example.org/p2p/Qmfoo')) // true
  * ```
  */
-export const DNS = fmt(or(_DNS, _DNSADDR, _DNS4, _DNS6), optional(peerId()))
+export const DNS = fmt(or(_DNS, _DNSADDR, _DNS4, _DNS6), optional(value(CODE_P2P)))
 
-const _IP4 = and(literal('ip4'), func(isIPv4))
-const _IP6 = and(literal('ip6'), func(isIPv6))
+const _IP4 = value(CODE_IP4)
+const _IP6 = value(CODE_IP6)
 const _IP = or(_IP4, _IP6)
 
 const _IP_OR_DOMAIN = or(_IP, _DNS, _DNS4, _DNS6, _DNSADDR)
@@ -181,7 +181,7 @@ const _IP_OR_DOMAIN = or(_IP, _DNS, _DNS4, _DNS6, _DNSADDR)
  * IP_OR_DOMAIN.matches(multiaddr('/p2p/QmFoo')) // false
  * ```
  */
-export const IP_OR_DOMAIN = fmt(or(_IP, and(or(_DNS, _DNSADDR, _DNS4, _DNS6), optional(peerId()))))
+export const IP_OR_DOMAIN = fmt(or(_IP, and(or(_DNS, _DNSADDR, _DNS4, _DNS6), optional(value(CODE_P2P)))))
 
 /**
  * Matches ip4 addresses.
@@ -234,8 +234,8 @@ export const IP6 = fmt(_IP6)
  */
 export const IP = fmt(_IP)
 
-const _TCP = and(_IP_OR_DOMAIN, literal('tcp'), number())
-const _UDP = and(_IP_OR_DOMAIN, literal('udp'), number())
+const _TCP = and(_IP_OR_DOMAIN, value(CODE_TCP))
+const _UDP = and(_IP_OR_DOMAIN, value(CODE_UDP))
 
 /**
  * Matches TCP addresses.
@@ -249,7 +249,7 @@ const _UDP = and(_IP_OR_DOMAIN, literal('udp'), number())
  * TCP.matches(multiaddr('/ip4/123.123.123.123/tcp/1234')) // true
  * ```
  */
-export const TCP = fmt(and(_TCP, optional(peerId())))
+export const TCP = fmt(and(_TCP, optional(value(CODE_P2P))))
 
 /**
  * Matches UDP addresses.
@@ -265,10 +265,10 @@ export const TCP = fmt(and(_TCP, optional(peerId())))
  */
 export const UDP = fmt(_UDP)
 
-const _QUIC = and(_UDP, literal('quic'), optional(peerId()))
-const _QUICV1 = and(_UDP, literal('quic-v1'), optional(peerId()))
+const _QUIC = and(_UDP, code(CODE_QUIC), optional(value(CODE_P2P)))
+const _QUIC_V1 = and(_UDP, code(CODE_QUIC_V1), optional(value(CODE_P2P)))
 
-const QUIC_V0_OR_V1 = or(_QUIC, _QUICV1)
+const QUIC_V0_OR_V1 = or(_QUIC, _QUIC_V1)
 
 /**
  * Matches QUIC addresses.
@@ -296,18 +296,19 @@ export const QUIC = fmt(_QUIC)
  * QUICV1.matches(multiaddr('/ip4/123.123.123.123/udp/1234/quic-v1')) // true
  * ```
  */
-export const QUICV1 = fmt(_QUICV1)
+export const QUIC_V1 = fmt(_QUIC_V1)
+export const QUICV1 = QUIC_V1
 
 const _WEB = or(
   _IP_OR_DOMAIN,
   _TCP,
   _UDP,
   _QUIC,
-  _QUICV1
+  _QUIC_V1
 )
 
 const _WebSockets = or(
-  and(_WEB, literal('ws'), optional(peerId()))
+  and(_WEB, code(CODE_WS), optional(value(CODE_P2P)))
 )
 
 /**
@@ -325,8 +326,8 @@ const _WebSockets = or(
 export const WebSockets = fmt(_WebSockets)
 
 const _WebSocketsSecure = or(
-  and(_WEB, literal('wss'), optional(peerId())),
-  and(_WEB, literal('tls'), optional(and(literal('sni'), string())), literal('ws'), optional(peerId()))
+  and(_WEB, code(CODE_WSS), optional(value(CODE_P2P))),
+  and(_WEB, code(CODE_TLS), optional(value(CODE_SNI)), code(CODE_WS), optional(value(CODE_P2P)))
 )
 
 /**
@@ -343,7 +344,7 @@ const _WebSocketsSecure = or(
  */
 export const WebSocketsSecure = fmt(_WebSocketsSecure)
 
-const _WebRTCDirect = and(_UDP, literal('webrtc-direct'), optional(certhash()), optional(certhash()), optional(peerId()))
+const _WebRTCDirect = and(_UDP, code(CODE_WEBRTC_DIRECT), optional(value(CODE_CERTHASH)), optional(value(CODE_CERTHASH)), optional(value(CODE_P2P)))
 
 /**
  * Matches WebRTC-direct addresses.
@@ -359,7 +360,7 @@ const _WebRTCDirect = and(_UDP, literal('webrtc-direct'), optional(certhash()), 
  */
 export const WebRTCDirect = fmt(_WebRTCDirect)
 
-const _WebTransport = and(_QUICV1, literal('webtransport'), optional(certhash()), optional(certhash()), optional(peerId()))
+const _WebTransport = and(_QUIC_V1, code(CODE_WEBTRANSPORT), optional(value(CODE_CERTHASH)), optional(value(CODE_CERTHASH)), optional(value(CODE_P2P)))
 
 /**
  * Matches WebTransport addresses.
@@ -378,12 +379,12 @@ export const WebTransport = fmt(_WebTransport)
 const _P2P = or(
   _WebSockets,
   _WebSocketsSecure,
-  and(_TCP, optional(peerId())),
-  and(QUIC_V0_OR_V1, optional(peerId())),
-  and(_IP_OR_DOMAIN, optional(peerId())),
+  and(_TCP, optional(value(CODE_P2P))),
+  and(QUIC_V0_OR_V1, optional(value(CODE_P2P))),
+  and(_IP_OR_DOMAIN, optional(value(CODE_P2P))),
   _WebRTCDirect,
   _WebTransport,
-  peerId()
+  value(CODE_P2P)
 )
 
 /**
@@ -400,7 +401,7 @@ const _P2P = or(
  */
 export const P2P = fmt(_P2P)
 
-const _Circuit = and(_P2P, literal('p2p-circuit'), peerId())
+const _Circuit = and(_P2P, code(CODE_P2P_CIRCUIT), value(CODE_P2P))
 
 /**
  * Matches circuit relay addresses
@@ -417,9 +418,9 @@ const _Circuit = and(_P2P, literal('p2p-circuit'), peerId())
 export const Circuit = fmt(_Circuit)
 
 const _WebRTC = or(
-  and(_P2P, literal('p2p-circuit'), literal('webrtc'), optional(peerId())),
-  and(_P2P, literal('webrtc'), optional(peerId())),
-  and(literal('webrtc'), optional(peerId()))
+  and(_P2P, code(CODE_P2P_CIRCUIT), code(CODE_WEBRTC), optional(value(CODE_P2P))),
+  and(_P2P, code(CODE_WEBRTC), optional(value(CODE_P2P))),
+  and(code(CODE_WEBRTC), optional(value(CODE_P2P)))
 )
 
 /**
@@ -437,8 +438,8 @@ const _WebRTC = or(
 export const WebRTC = fmt(_WebRTC)
 
 const _HTTP = or(
-  and(_IP_OR_DOMAIN, literal('tcp'), number(), literal('http'), optional(peerId())),
-  and(_IP_OR_DOMAIN, literal('http'), optional(peerId()))
+  and(_IP_OR_DOMAIN, value(CODE_TCP), code(CODE_HTTP), optional(value(CODE_P2P))),
+  and(_IP_OR_DOMAIN, code(CODE_HTTP), optional(value(CODE_P2P)))
 )
 
 /**
@@ -455,14 +456,15 @@ const _HTTP = or(
  */
 export const HTTP = fmt(_HTTP)
 
-const _HTTPS = or(
-  and(_IP_OR_DOMAIN, literal('tcp'), or(
-    and(literal('443'), literal('http')),
-    and(number(), literal('https')),
-    and(number(), literal('tls'), literal('http'))
-  ), optional(peerId())),
-  and(_IP_OR_DOMAIN, literal('tls'), literal('http'), optional(peerId())),
-  and(_IP_OR_DOMAIN, literal('https'), optional(peerId()))
+const _HTTPS = and(_IP_OR_DOMAIN, or(
+  and(value(CODE_TCP, '443'), code(CODE_HTTP)),
+  and(value(CODE_TCP), code(CODE_HTTPS)),
+  and(value(CODE_TCP), code(CODE_TLS), code(CODE_HTTP)),
+  and(code(CODE_TLS), code(CODE_HTTP)),
+  code(CODE_TLS),
+  code(CODE_HTTPS)
+),
+    optional(value(CODE_P2P))
 )
 
 /**
@@ -480,7 +482,7 @@ const _HTTPS = or(
 export const HTTPS = fmt(_HTTPS)
 
 const _Memory = or(
-  and(literal('memory'), string(), optional(peerId()))
+  and(value(CODE_MEMORY), optional(value(CODE_P2P)))
 )
 
 /**
@@ -498,7 +500,7 @@ const _Memory = or(
 export const Memory = fmt(_Memory)
 
 const _Unix = or(
-  and(literal('unix'), string(), optional(peerId()))
+  and(value(CODE_UNIX), optional(value(CODE_P2P)))
 )
 
 /**
