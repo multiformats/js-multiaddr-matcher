@@ -9,7 +9,15 @@ export const code = (code: number): Matcher => {
     match: (vals) => {
       const component = vals[0]
 
-      if (component?.code !== code) {
+      if (component == null) {
+        return false
+      }
+
+      if (component.code !== code) {
+        return false
+      }
+
+      if (component.value != null) {
         return false
       }
 

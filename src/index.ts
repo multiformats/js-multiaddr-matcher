@@ -32,7 +32,7 @@
  * ```
  */
 
-import { CODE_P2P, CODE_DNS4, CODE_DNS6, CODE_DNSADDR, CODE_DNS, CODE_IP4, CODE_IP6, CODE_TCP, CODE_UDP, CODE_QUIC, CODE_QUIC_V1, CODE_WS, CODE_WSS, CODE_TLS, CODE_SNI, CODE_WEBRTC_DIRECT, CODE_CERTHASH, CODE_WEBTRANSPORT, CODE_P2P_CIRCUIT, CODE_WEBRTC, CODE_HTTP, CODE_UNIX, CODE_HTTPS, CODE_MEMORY } from '@multiformats/multiaddr'
+import { CODE_P2P, CODE_DNS4, CODE_DNS6, CODE_DNSADDR, CODE_DNS, CODE_IP4, CODE_IP6, CODE_TCP, CODE_UDP, CODE_QUIC, CODE_QUIC_V1, CODE_WS, CODE_WSS, CODE_TLS, CODE_SNI, CODE_WEBRTC_DIRECT, CODE_CERTHASH, CODE_WEBTRANSPORT, CODE_P2P_CIRCUIT, CODE_WEBRTC, CODE_HTTP, CODE_UNIX, CODE_HTTPS, CODE_MEMORY, CODE_IP6ZONE, CODE_IPCIDR } from '@multiformats/multiaddr'
 import { and, or, optional, fmt, code, value } from './utils.js'
 import type { Multiaddr, Component } from '@multiformats/multiaddr'
 
@@ -159,8 +159,15 @@ export const DNSADDR = fmt(_DNSADDR, optional(value(CODE_P2P)))
  */
 export const DNS = fmt(or(_DNS, _DNSADDR, _DNS4, _DNS6), optional(value(CODE_P2P)))
 
-const _IP4 = value(CODE_IP4)
-const _IP6 = value(CODE_IP6)
+const _IP4 = and(
+  value(CODE_IP4),
+  optional(value(CODE_IPCIDR))
+)
+const _IP6 = and(
+  optional(value(CODE_IP6ZONE)),
+  value(CODE_IP6),
+  optional(value(CODE_IPCIDR))
+)
 const _IP = or(_IP4, _IP6)
 
 const _IP_OR_DOMAIN = or(_IP, _DNS, _DNS4, _DNS6, _DNSADDR)
