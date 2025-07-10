@@ -22,6 +22,8 @@ describe('multiaddr matcher', () => {
   ]
 
   const badDNS = [
+    null,
+    undefined,
     '/ip4/127.0.0.1'
   ]
 
@@ -44,6 +46,8 @@ describe('multiaddr matcher', () => {
   ]
 
   const badIP = [
+    null,
+    undefined,
     '/udp/789/ip6/fc00::'
   ]
 
@@ -64,6 +68,8 @@ describe('multiaddr matcher', () => {
   ]
 
   const badTCP = [
+    null,
+    undefined,
     '/tcp/12345',
     '/ip6/fc00::/udp/5523/tcp/9543',
     '/dns4/protocol.ai'
@@ -81,6 +87,8 @@ describe('multiaddr matcher', () => {
   ]
 
   const badUDP = [
+    null,
+    undefined,
     '/udp/12345',
     '/ip6/fc00::/tcp/5523/udp/9543'
   ]
@@ -99,6 +107,8 @@ describe('multiaddr matcher', () => {
   ]
 
   const badQUIC = [
+    null,
+    undefined,
     '/ip4/0.0.0.0/tcp/12345/quic',
     '/ip6/fc00::/ip4/0.0.0.0/udp/1234/quic',
     '/quic'
@@ -118,6 +128,8 @@ describe('multiaddr matcher', () => {
   ]
 
   const badQUICv1 = [
+    null,
+    undefined,
     '/ip4/0.0.0.0/tcp/12345/quic-v1',
     '/ip6/fc00::/ip4/0.0.0.0/udp/1234/quic-v1',
     '/quic-v1',
@@ -186,12 +198,16 @@ describe('multiaddr matcher', () => {
   ]
 
   const badWS = [
+    null,
+    undefined,
     '/ip4/0.0.0.0/tcp/12345/udp/2222/ws',
     '/ip6/::/ip4/0.0.0.0/udp/1234/ws',
     '/ip4/127.0.0.1/tcp/24642/p2p-webrtc-star/ws'
   ]
 
   const badWSS = [
+    null,
+    undefined,
     '/ip4/0.0.0.0/tcp/12345/udp/2222/wss',
     '/ip6/::/ip4/0.0.0.0/udp/1234/wss',
     '/ip4/127.0.0.1/tcp/24642/p2p-webrtc-star/wss'
@@ -209,6 +225,8 @@ describe('multiaddr matcher', () => {
   ]
 
   const badCircuit = [
+    null,
+    undefined,
     '/ip4/0.0.0.0/tcp/12345/udp/2222/wss',
     '/ip4/0.0.7.6/udp/1234',
     '/ip6/::/udp/0/utp',
@@ -245,6 +263,8 @@ describe('multiaddr matcher', () => {
   ]
 
   const badWebRTCDirect = [
+    null,
+    undefined,
     '/ip4/0.0.0.0/tcp/4004/webrtc-direct',
     '/ip4/0.0.0.0/tcp/4004/webrtc-direct/certhash/uEiAeP0OEmBbGVTH5Bhnm3WopwRNSQ0et46xNkn2dIagnGw',
     '/ip4/0.0.0.0/tcp/4004/webrtc-direct/certhash/uEiAeP0OEmBbGVTH5Bhnm3WopwRNSQ0et46xNkn2dIagnGw/p2p/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64',
@@ -266,6 +286,8 @@ describe('multiaddr matcher', () => {
   ]
 
   const badWebRTC = [
+    null,
+    undefined,
     '/ip4/0.0.0.0/udp/0/webrtc',
     '/ip4/0.0.0.0/tcp/12345/udp/2222/wss/webrtc'
   ]
@@ -280,6 +302,8 @@ describe('multiaddr matcher', () => {
   ]
 
   const badWebTransport = [
+    null,
+    undefined,
     // quic instead of quic-v1
     '/ip4/10.5.0.2/udp/4001/quic/webtransport/certhash/uEiDWmsTxXe55Mbwnvd1qrPZAcE5Jtc0tE9WtGXD_NpMERg/certhash/uEiCoik2HBeT5oc9Jib3SQJzNjn9AnznMDpQWcOeKSuEc9A/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v'
   ]
@@ -296,6 +320,8 @@ describe('multiaddr matcher', () => {
   ]
 
   const badIPorDomain = [
+    null,
+    undefined,
     '/webrtc/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v',
     '/quic',
     '/unix/var%2Flog'
@@ -316,6 +342,8 @@ describe('multiaddr matcher', () => {
   ]
 
   const badHTTP = [
+    null,
+    undefined,
     '/ip4/0.0.0.0/udp/80/http'
   ]
 
@@ -341,6 +369,8 @@ describe('multiaddr matcher', () => {
   ]
 
   const badHTTPS = [
+    null,
+    undefined,
     '/ip4/0.0.0.0/udp/80/http'
   ]
 
@@ -355,6 +385,8 @@ describe('multiaddr matcher', () => {
   ]
 
   const badMemory = [
+    null,
+    undefined,
     '/ip4/0.0.0.0/udp/80/http'
   ]
 
@@ -370,6 +402,8 @@ describe('multiaddr matcher', () => {
   ]
 
   const badPeer = [
+    null,
+    undefined,
     '/ip4/0.0.0.0/udp/80/http',
     '/memory/0xDEADBEEF'
   ]
@@ -384,6 +418,8 @@ describe('multiaddr matcher', () => {
   ]
 
   const badUnix = [
+    null,
+    undefined,
     '/ip4/0.0.0.0/tcp/0/https'
   ]
 
@@ -403,7 +439,7 @@ describe('multiaddr matcher', () => {
     })
   }
 
-  function assertMismatches (p: MultiaddrMatcher, ...tests: string[][]): void {
+  function assertMismatches (p: MultiaddrMatcher, ...tests: Array<Array<string | null | undefined>>): void {
     tests.forEach((test) => {
       test.forEach((testcase) => {
         expect(p.matches(multiaddr(testcase))).to.equal(false, `${testcase} matched when it should not have`)

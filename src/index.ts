@@ -59,13 +59,13 @@ export interface MultiaddrMatcher {
    * Returns true if the passed multiaddr can be treated as this type of
    * multiaddr
    */
-  matches(ma: Multiaddr): boolean
+  matches(ma?: Multiaddr): boolean
 
   /**
    * Returns true if the passed multiaddr terminates as this type of
    * multiaddr
    */
-  exactMatch(ma: Multiaddr): boolean
+  exactMatch(ma?: Multiaddr): boolean
 }
 
 /**
