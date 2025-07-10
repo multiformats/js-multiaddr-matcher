@@ -127,7 +127,11 @@ export const and = (...matchers: Matcher[]): Matcher => {
  * Create a multiaddr matcher from the passed component matchers
  */
 export function fmt (...matchers: Matcher[]): MultiaddrMatcher {
-  function match (ma: Multiaddr): Component[] | false {
+  function match (ma?: Multiaddr): Component[] | false {
+    if (ma == null) {
+      return false
+    }
+
     let parts = ma.getComponents()
 
     for (const matcher of matchers) {
@@ -143,13 +147,13 @@ export function fmt (...matchers: Matcher[]): MultiaddrMatcher {
     return parts
   }
 
-  function matches (ma: Multiaddr): boolean {
+  function matches (ma?: Multiaddr): boolean {
     const result = match(ma)
 
     return result !== false
   }
 
-  function exactMatch (ma: Multiaddr): boolean {
+  function exactMatch (ma?: Multiaddr): boolean {
     const result = match(ma)
 
     if (result === false) {
