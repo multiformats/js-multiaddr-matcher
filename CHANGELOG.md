@@ -1,3 +1,9 @@
+## [2.0.2](https://github.com/multiformats/js-multiaddr-matcher/compare/v2.0.1...v2.0.2) (2025-07-10)
+
+### Bug Fixes
+
+* allow optional multiaddrs ([#62](https://github.com/multiformats/js-multiaddr-matcher/issues/62)) ([7ec36d2](https://github.com/multiformats/js-multiaddr-matcher/commit/7ec36d2a4a1f35aa3b5ee452610eef0fd5f27a2f))
+
 ## [2.0.1](https://github.com/multiformats/js-multiaddr-matcher/compare/v2.0.0...v2.0.1) (2025-07-07)
 
 ### Bug Fixes
