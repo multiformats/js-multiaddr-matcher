@@ -1,3 +1,17 @@
+## [3.0.0](https://github.com/multiformats/js-multiaddr-matcher/compare/v2.0.2...v3.0.0) (2025-09-03)
+
+### ⚠ BREAKING CHANGES
+
+* please use 13.x.x of @multiformats/multiaddr
+
+### Bug Fixes
+
+* update @multiformats/multiaddr to 13.x.x ([#64](https://github.com/multiformats/js-multiaddr-matcher/issues/64)) ([6d09ab4](https://github.com/multiformats/js-multiaddr-matcher/commit/6d09ab444afa864ac1a33052aabdcf9d7f5e1476))
+
+### Trivial Changes
+
+* add or force update .github/workflows/stale.yml ([#63](https://github.com/multiformats/js-multiaddr-matcher/issues/63)) ([8cd926e](https://github.com/multiformats/js-multiaddr-matcher/commit/8cd926e395cdf602662ae18a491c8238402ed5de))
+
 ## [2.0.2](https://github.com/multiformats/js-multiaddr-matcher/compare/v2.0.1...v2.0.2) (2025-07-10)
 
 ### Bug Fixes
