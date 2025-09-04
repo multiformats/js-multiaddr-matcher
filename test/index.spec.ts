@@ -214,6 +214,7 @@ describe('multiaddr matcher', () => {
   ]
 
   const goodCircuit = [
+    '/ip4/0.0.0.0/tcp/12345/ipfs/QmUjNmr8TgJCn1Ao7DvMy4cjoZU15b9bwSCBLE3vwXiwgj/p2p-circuit',
     '/ip4/0.0.0.0/tcp/12345/ipfs/QmUjNmr8TgJCn1Ao7DvMy4cjoZU15b9bwSCBLE3vwXiwgj/p2p-circuit/p2p/QmTysQQiTGMdfRsDQp516oZ9bR3FiSCDnicUnqny2q1d79',
     '/ip4/0.0.0.0/tcp/12345/p2p-circuit/p2p/QmTysQQiTGMdfRsDQp516oZ9bR3FiSCDnicUnqny2q1d79',
     '/dns/example.org/ws/ipfs/QmUjNmr8TgJCn1Ao7DvMy4cjoZU15b9bwSCBLE3vwXiwgj/p2p-circuit/p2p/QmTysQQiTGMdfRsDQp516oZ9bR3FiSCDnicUnqny2q1d79',
@@ -231,7 +232,9 @@ describe('multiaddr matcher', () => {
     '/ip4/0.0.7.6/udp/1234',
     '/ip6/::/udp/0/utp',
     '/dnsaddr/ipfs.io/ws',
-    '/ip4/1.2.3.4/tcp/3456/http/p2p-webrtc-star'
+    '/ip4/1.2.3.4/tcp/3456/http/p2p-webrtc-star',
+    '/ip4/0.0.0.0/tcp/12345/ipfs/QmUjNmr8TgJCn1Ao7DvMy4cjoZU15b9bwSCBLE3vwXiwgj/p2p-circuit/webrtc',
+    '/ip4/0.0.0.0/tcp/12345/ipfs/QmUjNmr8TgJCn1Ao7DvMy4cjoZU15b9bwSCBLE3vwXiwgj/p2p-circuit/webrtc/p2p/QmTysQQiTGMdfRsDQp516oZ9bR3FiSCDnicUnqny2q1d79'
   ]
 
   const goodIPFS = [

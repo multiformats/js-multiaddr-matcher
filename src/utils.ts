@@ -53,6 +53,24 @@ export const value = (code: number, value?: string): Matcher => {
 }
 
 /**
+ * Matches a multiaddr component with the specified code and value. If the value
+ * is omitted any non-undefined value is matched.
+ */
+export const not = (matcher: Matcher): Matcher => {
+  return {
+    match: (vals) => {
+      const result = matcher.match(vals)
+
+      if (result === false) {
+        return vals
+      }
+
+      return false
+    }
+  }
+}
+
+/**
  * An optional matcher
  */
 export const optional = (matcher: Matcher): Matcher => {
