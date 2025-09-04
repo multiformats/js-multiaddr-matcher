@@ -33,7 +33,7 @@
  */
 
 import { CODE_P2P, CODE_DNS4, CODE_DNS6, CODE_DNSADDR, CODE_DNS, CODE_IP4, CODE_IP6, CODE_TCP, CODE_UDP, CODE_QUIC, CODE_QUIC_V1, CODE_WS, CODE_WSS, CODE_TLS, CODE_SNI, CODE_WEBRTC_DIRECT, CODE_CERTHASH, CODE_WEBTRANSPORT, CODE_P2P_CIRCUIT, CODE_WEBRTC, CODE_HTTP, CODE_UNIX, CODE_HTTPS, CODE_MEMORY, CODE_IP6ZONE, CODE_IPCIDR } from '@multiformats/multiaddr'
-import { and, or, optional, fmt, code, value } from './utils.js'
+import { and, or, optional, fmt, code, value, not } from './utils.js'
 import type { Multiaddr, Component } from '@multiformats/multiaddr'
 
 /**
@@ -406,7 +406,7 @@ const _P2P = or(
  */
 export const P2P = fmt(_P2P)
 
-const _Circuit = and(_P2P, code(CODE_P2P_CIRCUIT), value(CODE_P2P))
+const _Circuit = and(optional(_P2P), code(CODE_P2P_CIRCUIT), not(code(CODE_WEBRTC)), optional(value(CODE_P2P)))
 
 /**
  * Matches circuit relay addresses
