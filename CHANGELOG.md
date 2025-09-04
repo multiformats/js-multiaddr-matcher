@@ -1,3 +1,9 @@
+## [3.0.1](https://github.com/multiformats/js-multiaddr-matcher/compare/v3.0.0...v3.0.1) (2025-09-04)
+
+### Bug Fixes
+
+* match circuit relay address without target peer id ([#65](https://github.com/multiformats/js-multiaddr-matcher/issues/65)) ([d4a4c66](https://github.com/multiformats/js-multiaddr-matcher/commit/d4a4c6613313d661c4852c3ecaa08c4443658baa))
+
 ## [3.0.0](https://github.com/multiformats/js-multiaddr-matcher/compare/v2.0.2...v3.0.0) (2025-09-03)
 
 ### ⚠ BREAKING CHANGES
