@@ -32,7 +32,7 @@
  * ```
  */
 
-import { CODE_P2P, CODE_DNS4, CODE_DNS6, CODE_DNSADDR, CODE_DNS, CODE_IP4, CODE_IP6, CODE_TCP, CODE_UDP, CODE_QUIC, CODE_QUIC_V1, CODE_WS, CODE_WSS, CODE_TLS, CODE_SNI, CODE_WEBRTC_DIRECT, CODE_CERTHASH, CODE_WEBTRANSPORT, CODE_P2P_CIRCUIT, CODE_WEBRTC, CODE_HTTP, CODE_UNIX, CODE_HTTPS, CODE_MEMORY, CODE_IP6ZONE, CODE_IPCIDR } from '@multiformats/multiaddr'
+import { CODE_P2P, CODE_DNS4, CODE_DNS6, CODE_DNSADDR, CODE_DNS, CODE_IP4, CODE_IP6, CODE_TCP, CODE_UDP, CODE_QUIC, CODE_QUIC_V1, CODE_WS, CODE_WSS, CODE_TLS, CODE_SNI, CODE_WEBRTC_DIRECT, CODE_CERTHASH, CODE_WEBTRANSPORT, CODE_P2P_CIRCUIT, CODE_WEBRTC, CODE_HTTP, CODE_UNIX, CODE_HTTPS, CODE_MEMORY, CODE_IP6ZONE, CODE_IPCIDR, CODE_HTTP_PATH } from '@multiformats/multiaddr'
 import { and, or, optional, fmt, code, value, not } from './utils.js'
 import type { Multiaddr, Component } from '@multiformats/multiaddr'
 
@@ -442,10 +442,7 @@ const _WebRTC = or(
  */
 export const WebRTC = fmt(_WebRTC)
 
-const _HTTP = or(
-  and(_IP_OR_DOMAIN, value(CODE_TCP), code(CODE_HTTP), optional(value(CODE_P2P))),
-  and(_IP_OR_DOMAIN, code(CODE_HTTP), optional(value(CODE_P2P)))
-)
+const _HTTP = and(_IP_OR_DOMAIN, not(value(CODE_UDP)), optional(value(CODE_TCP)), optional(code(CODE_HTTP)), optional(value(CODE_HTTP_PATH)), optional(value(CODE_P2P)))
 
 /**
  * Matches HTTP addresses
@@ -468,8 +465,7 @@ const _HTTPS = and(_IP_OR_DOMAIN, or(
   and(code(CODE_TLS), code(CODE_HTTP)),
   code(CODE_TLS),
   code(CODE_HTTPS)
-),
-optional(value(CODE_P2P))
+), optional(value(CODE_HTTP_PATH)), optional(value(CODE_P2P))
 )
 
 /**
