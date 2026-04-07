@@ -338,9 +338,11 @@ describe('multiaddr matcher', () => {
     '/dnsaddr/example.org/tcp/80/http',
     '/dns/example.org/tcp/7777/http',
     '/dns/example.org/tcp/7777/http/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v',
-    '/dns/trustless-gateway.link',
     '/dns/trustless-gateway.link/tcp/80',
+    '/dns/trustless-gateway.link/tcp/1234/http',
     '/dns/trustless-gateway.link/http',
+    '/dns/trustless-gateway.link/http/http-path/ipfs%2Fbafybeigocr7lc57bjw3b7jkv2y3mtggcvfiebs5wq5b7epfwtb5wgwgzm4%3Fformat%3Draw',
+    '/dns/trustless-gateway.link/http/http-path/ipfs%2Fbafybeigocr7lc57bjw3b7jkv2y3mtggcvfiebs5wq5b7epfwtb5wgwgzm4%3Fformat%3Draw/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v',
     '/dns/trustless-gateway.link/tcp/443/http/http-path/ipfs%2Fbafybeigocr7lc57bjw3b7jkv2y3mtggcvfiebs5wq5b7epfwtb5wgwgzm4%3Fformat%3Draw'
 
   ]

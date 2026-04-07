@@ -442,7 +442,12 @@ const _WebRTC = or(
  */
 export const WebRTC = fmt(_WebRTC)
 
-const _HTTP = and(_IP_OR_DOMAIN, not(value(CODE_UDP)), optional(value(CODE_TCP)), optional(code(CODE_HTTP)), optional(value(CODE_HTTP_PATH)), optional(value(CODE_P2P)))
+const _HTTP = and(_IP_OR_DOMAIN, or(
+  and(value(CODE_TCP, '80')),
+  and(value(CODE_TCP), code(CODE_HTTP)),
+  code(CODE_HTTP)
+), optional(value(CODE_HTTP_PATH)), optional(value(CODE_P2P))
+)
 
 /**
  * Matches HTTP addresses
