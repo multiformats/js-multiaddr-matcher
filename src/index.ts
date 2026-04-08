@@ -464,6 +464,7 @@ const _HTTP = and(_IP_OR_DOMAIN, or(
 export const HTTP = fmt(_HTTP)
 
 const _HTTPS = and(_IP_OR_DOMAIN, or(
+  and(value(CODE_TCP, '443')),
   and(value(CODE_TCP, '443'), code(CODE_HTTP)),
   and(value(CODE_TCP), code(CODE_HTTPS)),
   and(value(CODE_TCP), code(CODE_TLS), code(CODE_HTTP)),
