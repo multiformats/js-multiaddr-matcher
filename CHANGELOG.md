@@ -1,3 +1,9 @@
+## [3.0.2](https://github.com/multiformats/js-multiaddr-matcher/compare/v3.0.1...v3.0.2) (2026-04-09)
+
+### Bug Fixes
+
+* detect http/https addresses with paths and optional ports ([#67](https://github.com/multiformats/js-multiaddr-matcher/issues/67)) ([989f32f](https://github.com/multiformats/js-multiaddr-matcher/commit/989f32f302d955602412429bbb16bac4e50275a9))
+
 ## [3.0.1](https://github.com/multiformats/js-multiaddr-matcher/compare/v3.0.0...v3.0.1) (2025-09-04)
 
 ### Bug Fixes
