@@ -337,7 +337,14 @@ describe('multiaddr matcher', () => {
     '/dns6/example.org/tcp/80/http',
     '/dnsaddr/example.org/tcp/80/http',
     '/dns/example.org/tcp/7777/http',
-    '/dns/example.org/tcp/7777/http/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v'
+    '/dns/example.org/tcp/7777/http/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v',
+    '/dns/example.org/tcp/80',
+    '/dns/example.org/tcp/1234/http',
+    '/dns/example.org/http',
+    '/dns/example.org/http/http-path/ipfs%2Fbafybeigocr7lc57bjw3b7jkv2y3mtggcvfiebs5wq5b7epfwtb5wgwgzm4%3Fformat%3Draw',
+    '/dns/example.org/http/http-path/ipfs%2Fbafybeigocr7lc57bjw3b7jkv2y3mtggcvfiebs5wq5b7epfwtb5wgwgzm4%3Fformat%3Draw/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v',
+    '/dns/example.org/tcp/443/http/http-path/ipfs%2Fbafybeigocr7lc57bjw3b7jkv2y3mtggcvfiebs5wq5b7epfwtb5wgwgzm4%3Fformat%3Draw'
+
   ]
 
   const goodHTTP = [
@@ -357,6 +364,7 @@ describe('multiaddr matcher', () => {
     '/dns6/example.org/tcp/80/https',
     '/dnsaddr/example.org/tcp/80/https',
     '/dns/example.org/tcp/7777/https',
+    '/dns/example.org/tcp/443',
     '/dns4/example.org/tcp/443/http',
     '/dns6/example.org/tcp/443/http',
     '/dnsaddr/example.org/tcp/443/http',
@@ -364,7 +372,8 @@ describe('multiaddr matcher', () => {
     '/dns/example.org/tcp/7777/tls/http',
     '/dns/example.org/tcp/443/tls/http',
     '/dns4/example.org/tls/http',
-    '/dns/example.org/tls/http/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v'
+    '/dns/example.org/tls/http/p2p/12D3KooWQF6Q3i1QkziJQ9mkNNcyFD8GPQz6R6oEvT75wgsVXm4v',
+    '/dns/example.org/tcp/443/tls/http/http-path/ipfs%2Fbafybeigocr7lc57bjw3b7jkv2y3mtggcvfiebs5wq5b7epfwtb5wgwgzm4%3Fformat%3Draw'
   ]
 
   const goodHTTPS = [
