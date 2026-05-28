@@ -45,11 +45,13 @@
   "exports": {
     ".": {
       "types": "./dist/src/index.d.ts",
-      "import": "./dist/src/index.js"
+      "import": "./dist/src/index.js",
+      "module-sync": "./dist/src/index.js"
     },
     "./utils": {
       "types": "./dist/src/utils.d.ts",
-      "import": "./dist/src/utils.js"
+      "import": "./dist/src/utils.js",
+      "module-sync": "./dist/src/utils.js"
     }
   },
   "release": {
@@ -165,6 +167,6 @@
     "@multiformats/multiaddr": "^13.0.0"
   },
   "devDependencies": {
-    "aegir": "^47.0.19"
+    "aegir": "^48.0.6"
   }
 }

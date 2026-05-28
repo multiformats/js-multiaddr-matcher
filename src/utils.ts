@@ -1,4 +1,4 @@
-import type { Matcher, MultiaddrMatcher } from './index.js'
+import type { Matcher, MultiaddrMatcher } from './index.ts'
 import type { Multiaddr, Component } from '@multiformats/multiaddr'
 
 /**
