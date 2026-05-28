@@ -1,8 +1,7 @@
-/* eslint-env mocha */
 import { multiaddr } from '@multiformats/multiaddr'
 import { expect } from 'aegir/chai'
-import * as mafmt from '../src/index.js'
-import type { MultiaddrMatcher } from '../src/index.js'
+import * as mafmt from '../src/index.ts'
+import type { MultiaddrMatcher } from '../src/index.ts'
 
 describe('multiaddr matcher', () => {
   const exactDNS = [
